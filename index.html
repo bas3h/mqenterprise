@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MQ Enterprises — Uniform Supplier for Every Industry</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0a0a08;
+  --dark:#141410;
+  --charcoal:#1e1e1a;
+  --mid:#2e2e28;
+  --border:#3a3a34;
+  --muted:#8a8a7a;
+  --light:#c8c8b8;
+  --cream:#f0ede4;
+  --cream-dark:#e5e0d4;
+  --white:#fafaf6;
+  --accent:#e8b84b;
+  --accent-dim:#c49a30;
+  --green:#2a5c40;
+  --sans:'Inter',sans-serif;
+  --display:'Syne',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:var(--black);overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;height:64px;
+  background:rgba(250,250,246,0.95);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(0,0,0,0.07);
+  transition:box-shadow .3s;
+}
+nav.up{box-shadow:0 2px 20px rgba(0,0,0,0.07)}
+.nav-brand{font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--black);text-decoration:none;letter-spacing:-.01em}
+.nav-brand span{color:var(--accent)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:.05em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--black)}
+.nav-quote{background:var(--black);color:var(--white);padding:9px 20px;border-radius:2px;font-size:.75rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .2s;white-space:nowrap}
+.nav-quote:hover{background:var(--charcoal)}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--black);display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;padding-top:64px}
+.hero-bg{position:absolute;inset:0;background-image:radial-gradient(ellipse 60% 50% at 70% 50%,rgba(232,184,75,.07) 0%,transparent 70%),repeating-linear-gradient(90deg,rgba(255,255,255,.015) 0,rgba(255,255,255,.015) 1px,transparent 1px,transparent 80px),repeating-linear-gradient(0deg,rgba(255,255,255,.015) 0,rgba(255,255,255,.015) 1px,transparent 1px,transparent 80px);pointer-events:none}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 8%;position:relative;z-index:2}
+.hero-kicker{display:inline-flex;align-items:center;gap:10px;font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:32px;opacity:0;animation:up .7s ease forwards .1s}
+.hero-kicker::before{content:'';width:28px;height:1px;background:var(--accent)}
+h1{font-family:var(--display);font-size:clamp(2.8rem,4.5vw,4.4rem);font-weight:700;color:var(--white);line-height:1.05;margin-bottom:28px;letter-spacing:-.02em;opacity:0;animation:up .7s ease forwards .25s}
+h1 em{color:var(--accent);font-style:normal}
+.hero-desc{font-size:.97rem;font-weight:300;color:rgba(200,200,184,.7);line-height:1.8;max-width:420px;margin-bottom:44px;opacity:0;animation:up .7s ease forwards .4s}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:up .7s ease forwards .55s}
+.btn-gold{background:var(--accent);color:var(--black);padding:13px 28px;border-radius:2px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s;display:inline-block}
+.btn-gold:hover{background:#f0c55a;transform:translateY(-1px)}
+.btn-ghost{border:1px solid rgba(255,255,255,.2);color:var(--white);padding:13px 28px;border-radius:2px;font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:border-color .2s,background .2s;display:inline-block}
+.btn-ghost:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.04)}
+
+/* HERO RIGHT — photo grid */
+.hero-right{display:flex;flex-direction:column;justify-content:center;padding:80px 6% 80px 4%;position:relative;z-index:2;opacity:0;animation:fade .9s ease forwards .7s}
+.hero-photo-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;gap:8px}
+.hero-photo-grid img{width:100%;height:100%;object-fit:cover;border-radius:4px;filter:brightness(.85)}
+.hero-photo-grid img:first-child{grid-row:span 2;height:100%}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border-top:1px solid rgba(255,255,255,.08);padding-top:28px;margin-top:16px}
+.stat-num{font-family:var(--display);font-size:2rem;font-weight:700;color:var(--accent)}
+.stat-label{font-size:.7rem;color:rgba(200,200,184,.45);margin-top:3px;line-height:1.5;letter-spacing:.03em}
+
+/* TICKER */
+.ticker{background:var(--accent);padding:12px 0;overflow:hidden;display:flex;align-items:center}
+.ticker-inner{display:flex;white-space:nowrap;animation:ticker 32s linear infinite}
+.ticker-item{font-family:var(--display);font-size:.8rem;font-weight:600;color:var(--black);letter-spacing:.08em;text-transform:uppercase;padding:0 48px}
+.ticker-sep{opacity:.35;margin:0 -24px}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section{padding:100px 8%}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:16px}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--green)}
+h2{font-family:var(--display);font-size:clamp(2rem,3vw,3rem);font-weight:700;color:var(--black);line-height:1.1;letter-spacing:-.02em;margin-bottom:16px}
+.section-sub{font-size:.95rem;color:var(--muted);line-height:1.8;max-width:500px}
+
+/* INDUSTRIES */
+.industries{background:var(--white)}
+.ind-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:24px}
+.ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border)}
+.ind-card{background:var(--white);position:relative;overflow:hidden;cursor:default;transition:transform .25s}
+.ind-card:hover{transform:translateY(-3px);z-index:1}
+.ind-photo{width:100%;height:180px;object-fit:cover;display:block;transition:transform .4s}
+.ind-card:hover .ind-photo{transform:scale(1.04)}
+.ind-body{padding:24px 22px}
+.ind-name{font-family:var(--display);font-size:.97rem;font-weight:700;color:var(--black);margin-bottom:7px}
+.ind-desc{font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.ind-items{display:flex;flex-direction:column;gap:5px}
+.ind-item{font-size:.72rem;color:var(--green);display:flex;align-items:center;gap:7px}
+.ind-item::before{content:'';width:3px;height:3px;background:var(--accent);border-radius:50%;flex-shrink:0}
+.ind-bar{height:3px;background:var(--accent);position:absolute;bottom:0;left:0;right:0;transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.ind-card:hover .ind-bar{transform:scaleX(1)}
+
+/* WHY */
+.why{background:var(--dark);color:var(--white)}
+.why h2{color:var(--white)}
+.why .section-sub{color:rgba(200,200,184,.55)}
+.why .eyebrow{color:var(--accent)}
+.why .eyebrow::before{background:var(--accent)}
+.why-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:56px}
+.why-photo{position:relative;border-radius:4px;overflow:hidden}
+.why-photo img{width:100%;height:480px;object-fit:cover;display:block;filter:brightness(.75)}
+.why-photo-badge{position:absolute;bottom:24px;left:24px;background:var(--accent);padding:12px 20px;border-radius:2px}
+.wpb-num{font-family:var(--display);font-size:1.6rem;font-weight:700;color:var(--black);line-height:1}
+.wpb-label{font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(10,10,8,.7);margin-top:2px}
+.why-pillars{display:flex;flex-direction:column;gap:0}
+.why-pillar{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.07);align-items:flex-start}
+.why-pillar:first-child{border-top:1px solid rgba(255,255,255,.07)}
+.wp-icon{width:38px;height:38px;background:rgba(232,184,75,.1);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin-top:1px}
+.wp-title{font-family:var(--display);font-size:.92rem;font-weight:600;color:var(--white);margin-bottom:5px}
+.wp-desc{font-size:.78rem;color:rgba(200,200,184,.5);line-height:1.7}
+.wp-tag{display:inline-block;margin-top:8px;font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:rgba(232,184,75,.08);padding:3px 9px;border-radius:20px}
+
+/* GALLERY */
+.gallery{background:var(--cream);padding:80px 8%}
+.gallery-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;flex-wrap:wrap;gap:16px}
+.gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:260px 260px;gap:8px}
+.gallery-grid img{width:100%;height:100%;object-fit:cover;border-radius:3px;transition:transform .4s,filter .4s;filter:brightness(.9)}
+.gallery-grid img:hover{transform:scale(1.02);filter:brightness(1);z-index:1;position:relative}
+.gallery-grid img:first-child{grid-row:span 2}
+
+/* PROCESS */
+.process{background:var(--white)}
+.process-header{text-align:center;margin-bottom:56px}
+.process-header .eyebrow{justify-content:center}
+.process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.process-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:var(--border);z-index:0}
+.process-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px;position:relative;z-index:1}
+.step-circle{width:56px;height:56px;border-radius:50%;background:var(--white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1rem;font-weight:700;color:var(--black);margin-bottom:20px;transition:all .3s}
+.process-step:hover .step-circle{background:var(--accent);border-color:var(--accent)}
+.step-title{font-family:var(--display);font-size:.82rem;font-weight:600;color:var(--black);margin-bottom:6px}
+.step-desc{font-size:.73rem;color:var(--muted);line-height:1.6}
+
+/* CLIENTS */
+.clients{background:var(--cream)}
+.clients-header{text-align:center;margin-bottom:48px}
+.clients-header .eyebrow{justify-content:center}
+.clients-header .section-sub{margin:0 auto}
+.client-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:860px;margin:0 auto}
+.client-tile{background:var(--white);border-radius:4px;padding:32px 24px;display:flex;align-items:center;gap:18px;transition:transform .25s,box-shadow .25s}
+.client-tile:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.06)}
+.ctile-av{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:.9rem;font-weight:700;flex-shrink:0}
+.ctile-name{font-family:var(--display);font-size:.95rem;font-weight:600;color:var(--black)}
+.ctile-desc{font-size:.74rem;color:var(--muted);margin-top:3px;line-height:1.5}
+
+/* QUOTE */
+.quote{background:var(--black)}
+.quote h2{color:var(--white)}
+.quote .eyebrow{color:var(--accent)}
+.quote .eyebrow::before{background:var(--accent)}
+.quote .section-sub{color:rgba(200,200,184,.5)}
+.quote-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-list{display:flex;flex-direction:column;gap:18px;margin-top:36px}
+.contact-row{display:flex;gap:14px;align-items:flex-start}
+.c-icon{width:40px;height:40px;background:rgba(255,255,255,.05);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.c-label{font-size:.62rem;color:rgba(200,200,184,.35);text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px}
+.c-val{font-size:.88rem;color:var(--cream);line-height:1.5}
+.qform{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:36px}
+.fg{margin-bottom:16px}
+.fl{display:block;font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(200,200,184,.38);margin-bottom:7px}
+.fi{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:2px;padding:11px 14px;font-family:var(--sans);font-size:.87rem;color:var(--cream);outline:none;transition:border-color .2s}
+.fi::placeholder{color:rgba(200,200,184,.18)}
+.fi:focus{border-color:var(--accent)}
+select.fi option{background:var(--dark);color:var(--cream)}
+textarea.fi{resize:vertical;min-height:88px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fsub{width:100%;background:var(--accent);color:var(--black);border:none;padding:13px;border-radius:2px;font-family:var(--display);font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:4px}
+.fsub:hover{background:#f0c55a}
+
+/* MAP NOTE */
+.map-note{margin-top:24px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start}
+.map-note-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px}
+.map-note-text{font-size:.8rem;color:rgba(200,200,184,.45);line-height:1.6}
+.map-note-text a{color:var(--accent);text-decoration:none}
+.map-note-text a:hover{text-decoration:underline}
+
+/* FOOTER */
+footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.foot-brand{font-family:var(--display);font-size:1rem;font-weight:700;color:rgba(200,200,184,.4)}
+.foot-brand span{color:var(--accent)}
+.foot-copy{font-size:.72rem;color:rgba(200,200,184,.22)}
+.foot-right{font-size:.72rem;color:rgba(200,200,184,.22);text-align:right}
+
+/* REVEAL */
+.r{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.r.on{opacity:1;transform:translateY(0)}
+
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+/* MOBILE */
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .ind-grid{grid-template-columns:1fr 1fr}
+  .why-inner{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gallery-grid img:first-child{grid-row:auto}
+  .process-steps{grid-template-columns:1fr 1fr;gap:32px}
+  .process-steps::before{display:none}
+  .client-tiles{grid-template-columns:1fr;max-width:400px}
+  .quote-inner{grid-template-columns:1fr}
+  .nav-links{display:none}
+  section{padding:70px 6%}
+}
+@media(max-width:600px){
+  .ind-grid{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-brand">MQ <span>Enterprises</span></a>
+  <ul class="nav-links">
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#why">Why MQ</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#clients">Clients</a></li>
+  </ul>
+  <a href="#quote" class="nav-quote">Get a quote</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-left">
+    <div class="hero-kicker">Hyderabad · Pan-India delivery</div>
+    <h1>Uniforms for<br>every <em>industry</em>,<br>every team.</h1>
+    <p class="hero-desc">MQ Enterprises supplies premium branded uniforms to corporates, hospitals, hotels, schools, security firms, retail chains and more — across India. One supplier. Every industry.</p>
+    <div class="hero-btns">
+      <a href="#quote" class="btn-gold">Get a free quote</a>
+      <a href="#industries" class="btn-ghost">Explore industries</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-grid">
+      <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80" alt="Corporate team in uniforms">
+      <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&q=80" alt="Healthcare uniforms">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&q=80" alt="Hotel staff uniforms">
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">8+</div><div class="stat-label">Industries<br>served</div></div>
+      <div><div class="stat-num">10+</div><div class="stat-label">Years of<br>experience</div></div>
+      <div><div class="stat-num">Pan</div><div class="stat-label">India<br>delivery</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Corporate uniforms</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">Healthcare & hospital</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">Hospitality & hotels</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">Security & safety</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">School & education</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">Industrial workwear</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">Retail staff</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">Aviation</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">Corporate uniforms</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">Healthcare & hospital</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">Hospitality & hotels</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">Security & safety</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">School & education</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">Industrial workwear</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">Retail staff</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">Aviation</span><span class="ticker-item ticker-sep">·</span>
+  </div>
+</div>
+
+<!-- INDUSTRIES -->
+<section class="industries" id="industries">
+  <div class="ind-header r">
+    <div>
+      <div class="eyebrow">Industries we serve</div>
+      <h2>Every workforce,<br>uniformed with pride</h2>
+    </div>
+    <p class="section-sub">From boardrooms to factory floors — we design and supply uniforms that make every team look and feel their best.</p>
+  </div>
+  <div class="ind-grid">
+
+    <div class="ind-card r">
+      <img class="ind-photo" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&q=75" alt="Corporate uniforms">
+      <div class="ind-body">
+        <div class="ind-name">Corporate</div>
+        <p class="ind-desc">Professional attire that builds brand identity and employee confidence.</p>
+        <div class="ind-items">
+          <span class="ind-item">Formal shirts & trousers</span>
+          <span class="ind-item">Blazers & business suits</span>
+          <span class="ind-item">Ladies formals & kurtis</span>
+          <span class="ind-item">Branded T-shirts & polos</span>
+        </div>
+      </div>
+      <div class="ind-bar"></div>
+    </div>
+
+    <div class="ind-card r">
+      <img class="ind-photo" src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=500&q=75" alt="Healthcare uniforms">
+      <div class="ind-body">
+        <div class="ind-name">Healthcare</div>
+        <p class="ind-desc">Comfortable, hygienic uniforms for hospitals, clinics and labs.</p>
+        <div class="ind-items">
+          <span class="ind-item">Doctor & nurse scrubs</span>
+          <span class="ind-item">Lab coats & medical tunics</span>
+          <span class="ind-item">Housekeeping uniforms</span>
+          <span class="ind-item">Patient gowns</span>
+        </div>
+      </div>
+      <div class="ind-bar"></div>
+    </div>
+
+    <div class="ind-card r">
+      <img class="ind-photo" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&q=75" alt="Hospitality uniforms">
+      <div class="ind-body">
+        <div class="ind-name">Hospitality</div>
+        <p class="ind-desc">Front-of-house, kitchen and housekeeping uniforms for hotels & restaurants.</p>
+        <div class="ind-items">
+          <span class="ind-item">Chef coats & aprons</span>
+          <span class="ind-item">Front desk & F&B staff</span>
+          <span class="ind-item">Housekeeping uniforms</span>
+          <span class="ind-item">Security & valet</span>
+        </div>
+      </div>
+      <div class="ind-bar"></div>
+    </div>
+
+    <div class="ind-card r">
+      <img class="ind-photo" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=75" alt="Security uniforms">
+      <div class="ind-body">
+        <div class="ind-name">Security</div>
+        <p class="ind-desc">Authoritative, durable uniforms for security guards and safety personnel.</p>
+        <div class="ind-items">
+          <span class="ind-item">Guard uniforms & shirts</span>
+          <span class="ind-item">Trousers & belts & caps</span>
+          <span class="ind-item">Hi-vis safety vests</span>
+          <span class="ind-item">Accessories & badges</span>
+        </div>
+      </div>
+      <div class="ind-bar"></div>
+    </div>
+
+    <div class="ind-card r">
+      <img class="ind-photo" src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=75" alt="School uniforms">
+      <div class="ind-body">
+        <div class="ind-name">Education</div>
+        <p class="ind-desc">Smart, durable uniforms for schools, colleges and coaching centres.</p>
+        <div class="ind-items">
+          <span class="ind-item">School shirts, trousers & skirts</span>
+          <span class="ind-item">Blazers & ties</span>
+          <span class="ind-item">Sports & PT uniforms</span>
+          <span class="ind-item">Staff & faculty uniforms</span>
+        </div>
+      </div>
+      <div class="ind-bar"></div>
+    </div>
+
+    <div class="ind-card r">
+      <img class="ind-photo" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500&q=75" alt="Industrial workwear">
+      <div class="ind-body">
+        <div class="ind-name">Industrial</div>
+        <p class="ind-desc">Heavy-duty workwear designed for factory floors and construction sites.</p>
+        <div class="ind-items">
+          <span class="ind-item">Coveralls & boiler suits</span>
+          <span class="ind-item">Hi-visibility jackets</span>
+          <span class="ind-item">Fire-retardant workwear</span>
+          <span class="ind-item">PPE & safety gear</span>
+        </div>
+      </div>
+      <div class="ind-bar"></div>
+    </div>
+
+    <div class="ind-card r">
+      <img class="ind-photo" src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=500&q=75" alt="Retail uniforms">
+      <div class="ind-body">
+        <div class="ind-name">Retail</div>
+        <p class="ind-desc">Branded uniforms for retail staff that reinforce your store's identity.</p>
+        <div class="ind-items">
+          <span class="ind-item">Branded polos & T-shirts</span>
+          <span class="ind-item">Aprons with logo</span>
+          <span class="ind-item">Jackets & vests</span>
+          <span class="ind-item">Custom colours & prints</span>
+        </div>
+      </div>
+      <div class="ind-bar"></div>
+    </div>
+
+    <div class="ind-card r">
+      <img class="ind-photo" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&q=75" alt="Aviation uniforms">
+      <div class="ind-body">
+        <div class="ind-name">Aviation</div>
+        <p class="ind-desc">Polished, regulation-compliant uniforms for ground and cabin crew.</p>
+        <div class="ind-items">
+          <span class="ind-item">Cabin crew uniforms</span>
+          <span class="ind-item">Ground staff attire</span>
+          <span class="ind-item">Airport service uniforms</span>
+          <span class="ind-item">Custom insignia & badges</span>
+        </div>
+      </div>
+      <div class="ind-bar"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY MQ -->
+<section class="why" id="why">
+  <div class="r">
+    <div class="eyebrow">Why MQ Enterprises</div>
+    <h2>What sets us apart<br>from the rest</h2>
+    <p class="section-sub">Every uniform supplier claims quality. Here's what we actually do differently.</p>
+  </div>
+  <div class="why-inner">
+    <div class="why-photo r">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80" alt="Uniform quality">
+      <div class="why-photo-badge">
+        <div class="wpb-num">10+</div>
+        <div class="wpb-label">Years supplying<br>hospitality brands</div>
+      </div>
+    </div>
+    <div class="why-pillars r">
+      <div class="why-pillar">
+        <div class="wp-icon">&#10003;</div>
+        <div>
+          <div class="wp-title">On-time delivery — guaranteed</div>
+          <div class="wp-desc">We commit to a delivery date on every order, confirmed in writing. If we miss it, we make it right immediately.</div>
+          <span class="wp-tag">Our #1 commitment</span>
+        </div>
+      </div>
+      <div class="why-pillar">
+        <div class="wp-icon">&#9646;</div>
+        <div>
+          <div class="wp-title">Every industry, one supplier</div>
+          <div class="wp-desc">Corporate to industrial — one vendor, one invoice, one relationship. No more juggling multiple uniform suppliers.</div>
+          <span class="wp-tag">Zero hassle</span>
+        </div>
+      </div>
+      <div class="why-pillar">
+        <div class="wp-icon">&#128205;</div>
+        <div>
+          <div class="wp-title">South India specialists</div>
+          <div class="wp-desc">Based in Hyderabad, Falaknuma. While others send emails, we visit, sample and solve problems face-to-face.</div>
+          <span class="wp-tag">Hyderabad · Bangalore · Chennai</span>
+        </div>
+      </div>
+      <div class="why-pillar">
+        <div class="wp-icon">&#8635;</div>
+        <div>
+          <div class="wp-title">7-day replacement guarantee</div>
+          <div class="wp-desc">Wrong size or quality issue? We replace at no charge within 7 days — no arguments, no delays.</div>
+          <span class="wp-tag">No-questions replacement</span>
+        </div>
+      </div>
+      <div class="why-pillar">
+        <div class="wp-icon">&#9999;</div>
+        <div>
+          <div class="wp-title">Full branding on every order</div>
+          <div class="wp-desc">Logo embroidery, screen printing, custom colours and sizes — your brand, exactly as you envision it.</div>
+          <span class="wp-tag">Logo · Colour · Size</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="gallery-header r">
+    <div>
+      <div class="eyebrow">Our work</div>
+      <h2>Uniforms that make<br>an impression</h2>
+    </div>
+    <a href="#quote" class="btn-gold" style="align-self:flex-end">Request samples</a>
+  </div>
+  <div class="gallery-grid r">
+    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80" alt="Office team uniforms">
+    <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=500&q=75" alt="Medical uniforms">
+    <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=500&q=75" alt="Hotel staff">
+    <img src="https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=500&q=75" alt="Factory workwear">
+    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&q=75" alt="School uniforms">
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-header r">
+    <div class="eyebrow">How it works</div>
+    <h2>From enquiry to delivery<br>in 5 simple steps</h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step r">
+      <div class="step-circle">01</div>
+      <div class="step-title">Share requirement</div>
+      <div class="step-desc">Tell us your industry, team size and what you need via WhatsApp or the form below.</div>
+    </div>
+    <div class="process-step r">
+      <div class="step-circle">02</div>
+      <div class="step-title">Get a quote</div>
+      <div class="step-desc">We send a detailed quote within 24 hours — fabric options, pricing, timeline.</div>
+    </div>
+    <div class="process-step r">
+      <div class="step-circle">03</div>
+      <div class="step-title">Approve sample</div>
+      <div class="step-desc">We send a sample with your logo and colours before bulk production begins.</div>
+    </div>
+    <div class="process-step r">
+      <div class="step-circle">04</div>
+      <div class="step-title">Bulk production</div>
+      <div class="step-desc">Your order goes into production with quality checks at every stage.</div>
+    </div>
+    <div class="process-step r">
+      <div class="step-circle">05</div>
+      <div class="step-title">Delivered on time</div>
+      <div class="step-desc">Delivered to your door on the committed date. Pan-India shipping available.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients" id="clients">
+  <div class="clients-header r">
+    <div class="eyebrow">Our clients</div>
+    <h2>Trusted by India's<br>leading brands</h2>
+    <p class="section-sub">We supply some of India's most recognised restaurant chains and hotel groups — brands that demand quality and on-time delivery, every order.</p>
+  </div>
+  <div class="client-tiles">
+    <div class="client-tile r">
+      <div class="ctile-av" style="background:#e8f5ee;color:#1a3d2b;">BN</div>
+      <div>
+        <div class="ctile-name">Barbeque Nation</div>
+        <div class="ctile-desc">Pan-India restaurant chain · 170+ outlets · Uniforms & linen</div>
+      </div>
+    </div>
+    <div class="client-tile r">
+      <div class="ctile-av" style="background:#eeedfe;color:#3c3489;">SJ</div>
+      <div>
+        <div class="ctile-name">Sayaji Hotels</div>
+        <div class="ctile-desc">Multi-city hotel group · Staff uniforms & linen</div>
+      </div>
+    </div>
+    <div class="client-tile r">
+      <div class="ctile-av" style="background:#faece7;color:#712b13;">SS</div>
+      <div>
+        <div class="ctile-name">Sara Soule</div>
+        <div class="ctile-desc">Premium hospitality brand · Staff uniforms</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE / CONTACT -->
+<section class="quote" id="quote">
+  <div class="quote-inner">
+    <div class="r">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Tell us what<br>your team needs</h2>
+      <p class="section-sub">Fill the form and we'll get back to you within 24 hours with a quote, fabric options and samples.</p>
+      <div class="contact-list">
+        <div class="contact-row">
+          <div class="c-icon">&#9742;</div>
+          <div>
+            <div class="c-label">WhatsApp / Phone</div>
+            <div class="c-val">+91 63019 55837</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="c-icon">&#9993;</div>
+          <div>
+            <div class="c-label">Email</div>
+            <div class="c-val">mqenterprises16@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="c-icon">&#9679;</div>
+          <div>
+            <div class="c-label">Address</div>
+            <div class="c-val">18-2-594/1 to 8, Near Risala Playground<br>Jangammet, Falaknuma<br>Hyderabad, Telangana — 500053</div>
+          </div>
+        </div>
+      </div>
+      <div class="map-note">
+        <div class="map-note-icon">&#128205;</div>
+        <div class="map-note-text">
+          Located in Falaknuma, Hyderabad. <a href="https://maps.google.com/?q=Falaknuma+Hyderabad+Telangana+500053" target="_blank">View on Google Maps ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="qform r">
+      <div class="frow">
+        <div class="fg">
+          <label class="fl">Your name</label>
+          <input class="fi" type="text" placeholder="Full name">
+        </div>
+        <div class="fg">
+          <label class="fl">Company / Organisation</label>
+          <input class="fi" type="text" placeholder="Company name">
+        </div>
+      </div>
+      <div class="frow">
+        <div class="fg">
+          <label class="fl">Phone / WhatsApp</label>
+          <input class="fi" type="tel" placeholder="+91">
+        </div>
+        <div class="fg">
+          <label class="fl">Email</label>
+          <input class="fi" type="email" placeholder="you@company.com">
+        </div>
+      </div>
+      <div class="fg">
+        <label class="fl">Industry</label>
+        <select class="fi">
+          <option value="" disabled selected>Select your industry</option>
+          <option>Corporate</option>
+          <option>Healthcare / Hospital</option>
+          <option>Hospitality / Hotel</option>
+          <option>Security</option>
+          <option>Education / School</option>
+          <option>Industrial / Factory</option>
+          <option>Retail</option>
+          <option>Aviation</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="frow">
+        <div class="fg">
+          <label class="fl">Approximate quantity</label>
+          <input class="fi" type="text" placeholder="e.g. 200 pieces">
+        </div>
+        <div class="fg">
+          <label class="fl">When do you need it?</label>
+          <input class="fi" type="text" placeholder="e.g. within 3 weeks">
+        </div>
+      </div>
+      <div class="fg">
+        <label class="fl">Describe your requirement</label>
+        <textarea class="fi" placeholder="Type of uniform, colours, logo, any special requirements..."></textarea>
+      </div>
+      <button class="fsub" onclick="alert('Thank you! MQ Enterprises will contact you within 24 hours.\n\nWhatsApp us directly: +91 63019 55837')">Send enquiry — free quote within 24 hrs</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-brand">MQ <span>Enterprises</span></div>
+  <div class="foot-copy">© 2026 MQ Enterprises · mqenterprises16@gmail.com · +91 63019 55837</div>
+  <div class="foot-right">Falaknuma, Hyderabad · Pan-India delivery</div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('up',scrollY>40)});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*60);obs.unobserve(e.target)}
+  });
+},{threshold:.08});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
