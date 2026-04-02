@@ -8,45 +8,30 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --black:#0a0a08;
-  --dark:#141410;
-  --charcoal:#1e1e1a;
-  --mid:#2e2e28;
-  --border:#3a3a34;
-  --muted:#8a8a7a;
-  --light:#c8c8b8;
-  --cream:#f0ede4;
-  --cream-dark:#e5e0d4;
-  --white:#fafaf6;
-  --accent:#e8b84b;
-  --accent-dim:#c49a30;
-  --green:#2a5c40;
-  --sans:'Inter',sans-serif;
-  --display:'Syne',sans-serif;
+  --black:#0a0a08;--dark:#141410;--charcoal:#1e1e1a;--mid:#2e2e28;
+  --border:#3a3a34;--muted:#8a8a7a;--cream:#f0ede4;--cream-dark:#e5e0d4;
+  --white:#fafaf6;--accent:#e8b84b;--green:#2a5c40;
+  --sans:'Inter',sans-serif;--display:'Syne',sans-serif;
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--white);color:var(--black);overflow-x:hidden}
 
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 5%;height:64px;
-  background:rgba(250,250,246,0.95);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(0,0,0,0.07);
-  transition:box-shadow .3s;
-}
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;background:rgba(250,250,246,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,0.07);transition:box-shadow .3s}
 nav.up{box-shadow:0 2px 20px rgba(0,0,0,0.07)}
-.nav-brand{font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--black);text-decoration:none;letter-spacing:-.01em}
+.nav-brand{font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--black);text-decoration:none;cursor:pointer}
 .nav-brand span{color:var(--accent)}
 .nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{font-size:.78rem;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:.05em;text-transform:uppercase;transition:color .2s}
+.nav-links a{font-size:.78rem;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:.05em;text-transform:uppercase;transition:color .2s;cursor:pointer}
 .nav-links a:hover{color:var(--black)}
-.nav-quote{background:var(--black);color:var(--white);padding:9px 20px;border-radius:2px;font-size:.75rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .2s;white-space:nowrap}
-.nav-quote:hover{background:var(--charcoal)}
+.nav-quote{background:var(--black);color:var(--white)!important;padding:9px 20px;border-radius:2px;font-size:.75rem!important;font-weight:500;letter-spacing:.06em!important;text-transform:uppercase;text-decoration:none;transition:background .2s;white-space:nowrap}
+.nav-quote:hover{background:var(--charcoal)!important}
 
-/* HERO */
+/* ── PAGES ── */
+.page{display:none}
+.page.active{display:block}
+
+/* ── HERO ── */
 .hero{min-height:100vh;background:var(--black);display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;padding-top:64px}
 .hero-bg{position:absolute;inset:0;background-image:radial-gradient(ellipse 60% 50% at 70% 50%,rgba(232,184,75,.07) 0%,transparent 70%),repeating-linear-gradient(90deg,rgba(255,255,255,.015) 0,rgba(255,255,255,.015) 1px,transparent 1px,transparent 80px),repeating-linear-gradient(0deg,rgba(255,255,255,.015) 0,rgba(255,255,255,.015) 1px,transparent 1px,transparent 80px);pointer-events:none}
 .hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 8%;position:relative;z-index:2}
@@ -56,52 +41,82 @@ h1{font-family:var(--display);font-size:clamp(2.8rem,4.5vw,4.4rem);font-weight:7
 h1 em{color:var(--accent);font-style:normal}
 .hero-desc{font-size:.97rem;font-weight:300;color:rgba(200,200,184,.7);line-height:1.8;max-width:420px;margin-bottom:44px;opacity:0;animation:up .7s ease forwards .4s}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:up .7s ease forwards .55s}
-.btn-gold{background:var(--accent);color:var(--black);padding:13px 28px;border-radius:2px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s;display:inline-block}
+.btn-gold{background:var(--accent);color:var(--black);padding:13px 28px;border-radius:2px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s;display:inline-block;cursor:pointer;border:none}
 .btn-gold:hover{background:#f0c55a;transform:translateY(-1px)}
-.btn-ghost{border:1px solid rgba(255,255,255,.2);color:var(--white);padding:13px 28px;border-radius:2px;font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:border-color .2s,background .2s;display:inline-block}
-.btn-ghost:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.04)}
-
-/* HERO RIGHT — photo grid */
+.btn-ghost{border:1px solid rgba(255,255,255,.2);color:var(--white);padding:13px 28px;border-radius:2px;font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:border-color .2s;display:inline-block;cursor:pointer}
+.btn-ghost:hover{border-color:rgba(255,255,255,.5)}
 .hero-right{display:flex;flex-direction:column;justify-content:center;padding:80px 6% 80px 4%;position:relative;z-index:2;opacity:0;animation:fade .9s ease forwards .7s}
 .hero-photo-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;gap:8px}
 .hero-photo-grid img{width:100%;height:100%;object-fit:cover;border-radius:4px;filter:brightness(.85)}
 .hero-photo-grid img:first-child{grid-row:span 2;height:100%}
 .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border-top:1px solid rgba(255,255,255,.08);padding-top:28px;margin-top:16px}
 .stat-num{font-family:var(--display);font-size:2rem;font-weight:700;color:var(--accent)}
-.stat-label{font-size:.7rem;color:rgba(200,200,184,.45);margin-top:3px;line-height:1.5;letter-spacing:.03em}
+.stat-label{font-size:.7rem;color:rgba(200,200,184,.45);margin-top:3px;line-height:1.5}
 
-/* TICKER */
-.ticker{background:var(--accent);padding:12px 0;overflow:hidden;display:flex;align-items:center}
+/* ── TICKER ── */
+.ticker{background:var(--accent);padding:12px 0;overflow:hidden;display:flex}
 .ticker-inner{display:flex;white-space:nowrap;animation:ticker 32s linear infinite}
 .ticker-item{font-family:var(--display);font-size:.8rem;font-weight:600;color:var(--black);letter-spacing:.08em;text-transform:uppercase;padding:0 48px}
 .ticker-sep{opacity:.35;margin:0 -24px}
 @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* SECTIONS */
+/* ── SECTION COMMON ── */
 section{padding:100px 8%}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:16px}
 .eyebrow::before{content:'';width:20px;height:1px;background:var(--green)}
 h2{font-family:var(--display);font-size:clamp(2rem,3vw,3rem);font-weight:700;color:var(--black);line-height:1.1;letter-spacing:-.02em;margin-bottom:16px}
 .section-sub{font-size:.95rem;color:var(--muted);line-height:1.8;max-width:500px}
 
-/* INDUSTRIES */
+/* ── INDUSTRIES GRID ── */
 .industries{background:var(--white)}
 .ind-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:24px}
 .ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border)}
-.ind-card{background:var(--white);position:relative;overflow:hidden;cursor:default;transition:transform .25s}
-.ind-card:hover{transform:translateY(-3px);z-index:1}
+.ind-card{background:var(--white);position:relative;overflow:hidden;cursor:pointer;transition:transform .25s}
+.ind-card:hover{transform:translateY(-4px);z-index:1;box-shadow:0 12px 40px rgba(0,0,0,.1)}
 .ind-photo{width:100%;height:180px;object-fit:cover;display:block;transition:transform .4s}
-.ind-card:hover .ind-photo{transform:scale(1.04)}
-.ind-body{padding:24px 22px}
-.ind-name{font-family:var(--display);font-size:.97rem;font-weight:700;color:var(--black);margin-bottom:7px}
-.ind-desc{font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.ind-card:hover .ind-photo{transform:scale(1.05)}
+.ind-body{padding:22px 20px 28px}
+.ind-name{font-family:var(--display);font-size:.97rem;font-weight:700;color:var(--black);margin-bottom:6px}
+.ind-desc{font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:12px}
 .ind-items{display:flex;flex-direction:column;gap:5px}
 .ind-item{font-size:.72rem;color:var(--green);display:flex;align-items:center;gap:7px}
 .ind-item::before{content:'';width:3px;height:3px;background:var(--accent);border-radius:50%;flex-shrink:0}
+.ind-cta{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.ind-cta::after{content:'→';transition:transform .2s}
+.ind-card:hover .ind-cta::after{transform:translateX(4px)}
 .ind-bar{height:3px;background:var(--accent);position:absolute;bottom:0;left:0;right:0;transform:scaleX(0);transition:transform .3s;transform-origin:left}
 .ind-card:hover .ind-bar{transform:scaleX(1)}
 
-/* WHY */
+/* ── INDUSTRY DETAIL PAGE ── */
+.ind-detail-hero{background:var(--dark);padding:100px 8% 60px;margin-top:64px;position:relative;overflow:hidden}
+.ind-detail-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 80% at 80% 50%,rgba(232,184,75,.06),transparent);pointer-events:none}
+.back-btn{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(200,200,184,.5);cursor:pointer;margin-bottom:32px;transition:color .2s;border:none;background:none;padding:0}
+.back-btn:hover{color:var(--accent)}
+.back-btn::before{content:'←'}
+.detail-title{font-family:var(--display);font-size:clamp(2.4rem,4vw,4rem);font-weight:700;color:var(--white);line-height:1.05;letter-spacing:-.02em;margin-bottom:16px}
+.detail-title em{color:var(--accent);font-style:normal}
+.detail-sub{font-size:1rem;color:rgba(200,200,184,.6);line-height:1.8;max-width:560px;margin-bottom:40px}
+.detail-tags{display:flex;flex-wrap:wrap;gap:8px}
+.detail-tag{padding:7px 16px;border:1px solid rgba(255,255,255,.12);border-radius:40px;font-size:.72rem;font-weight:500;color:rgba(200,200,184,.6)}
+
+/* Product catalog */
+.catalog{background:var(--white);padding:80px 8%}
+.catalog-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:16px}
+.catalog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.prod-card{background:var(--white);border:1px solid var(--cream-dark);border-radius:4px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.prod-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
+.prod-img{width:100%;height:220px;object-fit:cover;display:block;transition:transform .4s}
+.prod-card:hover .prod-img{transform:scale(1.04)}
+.prod-body{padding:20px}
+.prod-name{font-family:var(--display);font-size:1rem;font-weight:700;color:var(--black);margin-bottom:6px}
+.prod-desc{font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:12px}
+.prod-specs{display:flex;flex-wrap:wrap;gap:6px}
+.prod-spec{font-size:.65rem;font-weight:500;padding:3px 9px;background:var(--cream);border-radius:20px;color:var(--green)}
+.quote-strip{background:var(--dark);padding:56px 8%;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.qs-text{font-family:var(--display);font-size:1.4rem;font-weight:600;color:var(--white);max-width:560px;line-height:1.3}
+.qs-text em{color:var(--accent);font-style:normal}
+
+/* ── WHY ── */
 .why{background:var(--dark);color:var(--white)}
 .why h2{color:var(--white)}
 .why .section-sub{color:rgba(200,200,184,.55)}
@@ -113,24 +128,16 @@ h2{font-family:var(--display);font-size:clamp(2rem,3vw,3rem);font-weight:700;col
 .why-photo-badge{position:absolute;bottom:24px;left:24px;background:var(--accent);padding:12px 20px;border-radius:2px}
 .wpb-num{font-family:var(--display);font-size:1.6rem;font-weight:700;color:var(--black);line-height:1}
 .wpb-label{font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(10,10,8,.7);margin-top:2px}
-.why-pillars{display:flex;flex-direction:column;gap:0}
-.why-pillar{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.07);align-items:flex-start}
+.why-pillars{display:flex;flex-direction:column}
+.why-pillar{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.07);align-items:flex-start}
 .why-pillar:first-child{border-top:1px solid rgba(255,255,255,.07)}
-.wp-icon{width:38px;height:38px;background:rgba(232,184,75,.1);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin-top:1px}
-.wp-title{font-family:var(--display);font-size:.92rem;font-weight:600;color:var(--white);margin-bottom:5px}
+.wp-icon{width:38px;height:38px;background:rgba(232,184,75,.1);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.wp-title{font-family:var(--display);font-size:.92rem;font-weight:600;color:var(--white);margin-bottom:4px}
 .wp-desc{font-size:.78rem;color:rgba(200,200,184,.5);line-height:1.7}
-.wp-tag{display:inline-block;margin-top:8px;font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:rgba(232,184,75,.08);padding:3px 9px;border-radius:20px}
+.wp-tag{display:inline-block;margin-top:7px;font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:rgba(232,184,75,.08);padding:3px 9px;border-radius:20px}
 
-/* GALLERY */
-.gallery{background:var(--cream);padding:80px 8%}
-.gallery-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;flex-wrap:wrap;gap:16px}
-.gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:260px 260px;gap:8px}
-.gallery-grid img{width:100%;height:100%;object-fit:cover;border-radius:3px;transition:transform .4s,filter .4s;filter:brightness(.9)}
-.gallery-grid img:hover{transform:scale(1.02);filter:brightness(1);z-index:1;position:relative}
-.gallery-grid img:first-child{grid-row:span 2}
-
-/* PROCESS */
-.process{background:var(--white)}
+/* ── PROCESS ── */
+.process{background:var(--cream)}
 .process-header{text-align:center;margin-bottom:56px}
 .process-header .eyebrow{justify-content:center}
 .process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
@@ -141,19 +148,19 @@ h2{font-family:var(--display);font-size:clamp(2rem,3vw,3rem);font-weight:700;col
 .step-title{font-family:var(--display);font-size:.82rem;font-weight:600;color:var(--black);margin-bottom:6px}
 .step-desc{font-size:.73rem;color:var(--muted);line-height:1.6}
 
-/* CLIENTS */
-.clients{background:var(--cream)}
+/* ── CLIENTS ── */
+.clients{background:var(--white)}
 .clients-header{text-align:center;margin-bottom:48px}
 .clients-header .eyebrow{justify-content:center}
 .clients-header .section-sub{margin:0 auto}
 .client-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:860px;margin:0 auto}
-.client-tile{background:var(--white);border-radius:4px;padding:32px 24px;display:flex;align-items:center;gap:18px;transition:transform .25s,box-shadow .25s}
+.client-tile{background:var(--cream);border-radius:4px;padding:32px 24px;display:flex;align-items:center;gap:18px;transition:transform .25s,box-shadow .25s}
 .client-tile:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.06)}
 .ctile-av{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:.9rem;font-weight:700;flex-shrink:0}
 .ctile-name{font-family:var(--display);font-size:.95rem;font-weight:600;color:var(--black)}
 .ctile-desc{font-size:.74rem;color:var(--muted);margin-top:3px;line-height:1.5}
 
-/* QUOTE */
+/* ── QUOTE FORM ── */
 .quote{background:var(--black)}
 .quote h2{color:var(--white)}
 .quote .eyebrow{color:var(--accent)}
@@ -165,6 +172,8 @@ h2{font-family:var(--display);font-size:clamp(2rem,3vw,3rem);font-weight:700;col
 .c-icon{width:40px;height:40px;background:rgba(255,255,255,.05);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
 .c-label{font-size:.62rem;color:rgba(200,200,184,.35);text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px}
 .c-val{font-size:.88rem;color:var(--cream);line-height:1.5}
+.c-val a{color:var(--accent);text-decoration:none}
+.c-val a:hover{text-decoration:underline}
 .qform{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:36px}
 .fg{margin-bottom:16px}
 .fl{display:block;font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(200,200,184,.38);margin-bottom:7px}
@@ -176,36 +185,29 @@ textarea.fi{resize:vertical;min-height:88px}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .fsub{width:100%;background:var(--accent);color:var(--black);border:none;padding:13px;border-radius:2px;font-family:var(--display);font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:4px}
 .fsub:hover{background:#f0c55a}
+.fsub:disabled{opacity:.6;cursor:not-allowed}
 
-/* MAP NOTE */
-.map-note{margin-top:24px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start}
-.map-note-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px}
-.map-note-text{font-size:.8rem;color:rgba(200,200,184,.45);line-height:1.6}
-.map-note-text a{color:var(--accent);text-decoration:none}
-.map-note-text a:hover{text-decoration:underline}
-
-/* FOOTER */
+/* ── FOOTER ── */
 footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .foot-brand{font-family:var(--display);font-size:1rem;font-weight:700;color:rgba(200,200,184,.4)}
 .foot-brand span{color:var(--accent)}
 .foot-copy{font-size:.72rem;color:rgba(200,200,184,.22)}
 .foot-right{font-size:.72rem;color:rgba(200,200,184,.22);text-align:right}
 
-/* REVEAL */
+/* ── REVEAL ── */
 .r{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
 .r.on{opacity:1;transform:translateY(0)}
 
 @keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 
-/* MOBILE */
+/* ── MOBILE ── */
 @media(max-width:960px){
   .hero{grid-template-columns:1fr}
   .hero-right{display:none}
   .ind-grid{grid-template-columns:1fr 1fr}
   .why-inner{grid-template-columns:1fr}
-  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
-  .gallery-grid img:first-child{grid-row:auto}
+  .catalog-grid{grid-template-columns:1fr 1fr}
   .process-steps{grid-template-columns:1fr 1fr;gap:32px}
   .process-steps::before{display:none}
   .client-tiles{grid-template-columns:1fr;max-width:400px}
@@ -215,8 +217,8 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
 }
 @media(max-width:600px){
   .ind-grid{grid-template-columns:1fr}
+  .catalog-grid{grid-template-columns:1fr}
   .frow{grid-template-columns:1fr}
-  .gallery-grid{grid-template-columns:1fr}
   .hero-stats{grid-template-columns:1fr 1fr}
 }
 </style>
@@ -225,468 +227,631 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-brand">MQ <span>Enterprises</span></a>
+  <div class="nav-brand" onclick="goHome()">MQ <span>Enterprises</span></div>
   <ul class="nav-links">
-    <li><a href="#industries">Industries</a></li>
-    <li><a href="#why">Why MQ</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#clients">Clients</a></li>
+    <li><a onclick="goHome();scrollTo('#industries')">Industries</a></li>
+    <li><a onclick="goHome();scrollTo('#why')">Why MQ</a></li>
+    <li><a onclick="goHome();scrollTo('#clients')">Clients</a></li>
   </ul>
-  <a href="#quote" class="nav-quote">Get a quote</a>
+  <a class="nav-quote" onclick="goHome();scrollTo('#quote')">Get a quote</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-left">
-    <div class="hero-kicker">Hyderabad · Pan-India delivery</div>
-    <h1>Uniforms for<br>every <em>industry</em>,<br>every team.</h1>
-    <p class="hero-desc">MQ Enterprises supplies premium branded uniforms to corporates, hospitals, hotels, schools, security firms, retail chains and more — across India. One supplier. Every industry.</p>
-    <div class="hero-btns">
-      <a href="#quote" class="btn-gold">Get a free quote</a>
-      <a href="#industries" class="btn-ghost">Explore industries</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-photo-grid">
-      <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=600&q=80" alt="Corporate team in uniforms">
-      <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=400&q=80" alt="Healthcare uniforms">
-      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80" alt="Hotel staff uniforms">
-    </div>
-    <div class="hero-stats">
-      <div><div class="stat-num">8+</div><div class="stat-label">Industries<br>served</div></div>
-      <div><div class="stat-num">10+</div><div class="stat-label">Years of<br>experience</div></div>
-      <div><div class="stat-num">Pan</div><div class="stat-label">India<br>delivery</div></div>
-    </div>
-  </div>
-</section>
+<!-- ════════════════════════════════════════ HOME PAGE ════════════════════════════════════════ -->
+<div class="page active" id="page-home">
 
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item">Corporate uniforms</span><span class="ticker-item ticker-sep">·</span>
-    <span class="ticker-item">Healthcare & hospital</span><span class="ticker-item ticker-sep">·</span>
-    <span class="ticker-item">Hospitality & hotels</span><span class="ticker-item ticker-sep">·</span>
-    <span class="ticker-item">Security & safety</span><span class="ticker-item ticker-sep">·</span>
-    <span class="ticker-item">School & education</span><span class="ticker-item ticker-sep">·</span>
-    <span class="ticker-item">Industrial workwear</span><span class="ticker-item ticker-sep">·</span>
-    <span class="ticker-item">Retail staff</span><span class="ticker-item ticker-sep">·</span>
-    <span class="ticker-item">Aviation</span><span class="ticker-item ticker-sep">·</span>
-    <span class="ticker-item">Corporate uniforms</span><span class="ticker-item ticker-sep">·</span>
-    <span class="ticker-item">Healthcare & hospital</span><span class="ticker-item ticker-sep">·</span>
-    <span class="ticker-item">Hospitality & hotels</span><span class="ticker-item ticker-sep">·</span>
-    <span class="ticker-item">Security & safety</span><span class="ticker-item ticker-sep">·</span>
-    <span class="ticker-item">School & education</span><span class="ticker-item ticker-sep">·</span>
-    <span class="ticker-item">Industrial workwear</span><span class="ticker-item ticker-sep">·</span>
-    <span class="ticker-item">Retail staff</span><span class="ticker-item ticker-sep">·</span>
-    <span class="ticker-item">Aviation</span><span class="ticker-item ticker-sep">·</span>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-left">
+      <div class="hero-kicker">Hyderabad · Pan-India delivery</div>
+      <h1>Uniforms for<br>every <em>industry</em>,<br>every team.</h1>
+      <p class="hero-desc">MQ Enterprises supplies premium branded uniforms to corporates, hospitals, hotels, schools, security firms, retail chains and more — across India. One supplier. Every industry.</p>
+      <div class="hero-btns">
+        <button class="btn-gold" onclick="scrollTo('#quote')">Get a free quote</button>
+        <button class="btn-ghost" onclick="scrollTo('#industries')">Explore industries</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-photo-grid">
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=600&q=80" alt="Corporate uniforms">
+        <img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=400&q=80" alt="Healthcare uniforms">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=400&q=80" alt="Hotel staff">
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">8+</div><div class="stat-label">Industries served</div></div>
+        <div><div class="stat-num">10+</div><div class="stat-label">Years experience</div></div>
+        <div><div class="stat-num">Pan</div><div class="stat-label">India delivery</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span class="ticker-item">Corporate</span><span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Healthcare</span><span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Hospitality</span><span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Security</span><span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Education</span><span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Industrial</span><span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Retail</span><span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Aviation</span><span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Corporate</span><span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Healthcare</span><span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Hospitality</span><span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Security</span><span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Education</span><span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Industrial</span><span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Retail</span><span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Aviation</span><span class="ticker-item ticker-sep">·</span>
+    </div>
   </div>
+
+  <!-- INDUSTRIES -->
+  <section class="industries" id="industries">
+    <div class="ind-header r">
+      <div>
+        <div class="eyebrow">Industries we serve</div>
+        <h2>Click any industry<br>to explore uniforms</h2>
+      </div>
+      <p class="section-sub">From boardrooms to factory floors — click an industry to see the full range of uniforms we supply.</p>
+    </div>
+    <div class="ind-grid">
+
+      <div class="ind-card r" onclick="showIndustry('corporate')">
+        <img class="ind-photo" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=80" alt="Corporate">
+        <div class="ind-body">
+          <div class="ind-name">Corporate</div>
+          <p class="ind-desc">Professional attire that builds brand identity and confidence.</p>
+          <div class="ind-items">
+            <span class="ind-item">Formal shirts & trousers</span>
+            <span class="ind-item">Blazers & business suits</span>
+            <span class="ind-item">Ladies formals & kurtis</span>
+          </div>
+          <div class="ind-cta">View all styles</div>
+        </div>
+        <div class="ind-bar"></div>
+      </div>
+
+      <div class="ind-card r" onclick="showIndustry('healthcare')">
+        <img class="ind-photo" src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=500&q=80" alt="Healthcare">
+        <div class="ind-body">
+          <div class="ind-name">Healthcare</div>
+          <p class="ind-desc">Hygienic, comfortable uniforms for hospitals and clinics.</p>
+          <div class="ind-items">
+            <span class="ind-item">Doctor & nurse scrubs</span>
+            <span class="ind-item">Lab coats & tunics</span>
+            <span class="ind-item">Patient gowns</span>
+          </div>
+          <div class="ind-cta">View all styles</div>
+        </div>
+        <div class="ind-bar"></div>
+      </div>
+
+      <div class="ind-card r" onclick="showIndustry('hospitality')">
+        <img class="ind-photo" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=500&q=80" alt="Hospitality">
+        <div class="ind-body">
+          <div class="ind-name">Restaurants & Hotels</div>
+          <p class="ind-desc">Front-of-house, kitchen and housekeeping uniforms.</p>
+          <div class="ind-items">
+            <span class="ind-item">Chef coats & aprons</span>
+            <span class="ind-item">Waiter & server attire</span>
+            <span class="ind-item">Housekeeping uniforms</span>
+          </div>
+          <div class="ind-cta">View all styles</div>
+        </div>
+        <div class="ind-bar"></div>
+      </div>
+
+      <div class="ind-card r" onclick="showIndustry('security')">
+        <img class="ind-photo" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=500&q=80" alt="Security">
+        <div class="ind-body">
+          <div class="ind-name">Security</div>
+          <p class="ind-desc">Authoritative, durable uniforms for security personnel.</p>
+          <div class="ind-items">
+            <span class="ind-item">Guard shirts & trousers</span>
+            <span class="ind-item">Caps & accessories</span>
+            <span class="ind-item">Hi-vis safety vests</span>
+          </div>
+          <div class="ind-cta">View all styles</div>
+        </div>
+        <div class="ind-bar"></div>
+      </div>
+
+      <div class="ind-card r" onclick="showIndustry('education')">
+        <img class="ind-photo" src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=500&q=80" alt="Education">
+        <div class="ind-body">
+          <div class="ind-name">Education</div>
+          <p class="ind-desc">Smart, durable uniforms for schools and colleges.</p>
+          <div class="ind-items">
+            <span class="ind-item">School shirts & trousers</span>
+            <span class="ind-item">Blazers & ties</span>
+            <span class="ind-item">Sports & PT uniforms</span>
+          </div>
+          <div class="ind-cta">View all styles</div>
+        </div>
+        <div class="ind-bar"></div>
+      </div>
+
+      <div class="ind-card r" onclick="showIndustry('industrial')">
+        <img class="ind-photo" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=500&q=80" alt="Industrial">
+        <div class="ind-body">
+          <div class="ind-name">Industrial</div>
+          <p class="ind-desc">Heavy-duty workwear for factory floors and sites.</p>
+          <div class="ind-items">
+            <span class="ind-item">Coveralls & boiler suits</span>
+            <span class="ind-item">Hi-visibility jackets</span>
+            <span class="ind-item">Fire-retardant workwear</span>
+          </div>
+          <div class="ind-cta">View all styles</div>
+        </div>
+        <div class="ind-bar"></div>
+      </div>
+
+      <div class="ind-card r" onclick="showIndustry('retail')">
+        <img class="ind-photo" src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=500&q=80" alt="Retail">
+        <div class="ind-body">
+          <div class="ind-name">Retail</div>
+          <p class="ind-desc">Branded uniforms that reinforce your store identity.</p>
+          <div class="ind-items">
+            <span class="ind-item">Branded polos & T-shirts</span>
+            <span class="ind-item">Aprons with logo</span>
+            <span class="ind-item">Jackets & vests</span>
+          </div>
+          <div class="ind-cta">View all styles</div>
+        </div>
+        <div class="ind-bar"></div>
+      </div>
+
+      <div class="ind-card r" onclick="showIndustry('aviation')">
+        <img class="ind-photo" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=500&q=80" alt="Aviation">
+        <div class="ind-body">
+          <div class="ind-name">Aviation</div>
+          <p class="ind-desc">Polished uniforms for ground and cabin crew.</p>
+          <div class="ind-items">
+            <span class="ind-item">Cabin crew uniforms</span>
+            <span class="ind-item">Ground staff attire</span>
+            <span class="ind-item">Airport service uniforms</span>
+          </div>
+          <div class="ind-cta">View all styles</div>
+        </div>
+        <div class="ind-bar"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY MQ -->
+  <section class="why" id="why">
+    <div class="r">
+      <div class="eyebrow">Why MQ Enterprises</div>
+      <h2>What sets us apart</h2>
+      <p class="section-sub">Every supplier claims quality. Here's what we actually do differently.</p>
+    </div>
+    <div class="why-inner">
+      <div class="why-photo r">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=700&q=80" alt="Quality uniforms">
+        <div class="why-photo-badge">
+          <div class="wpb-num">10+</div>
+          <div class="wpb-label">Years supplying<br>hospitality brands</div>
+        </div>
+      </div>
+      <div class="why-pillars r">
+        <div class="why-pillar">
+          <div class="wp-icon">✓</div>
+          <div>
+            <div class="wp-title">On-time delivery — guaranteed</div>
+            <div class="wp-desc">We commit to a delivery date on every order, in writing. If we miss it, we make it right.</div>
+            <span class="wp-tag">Our #1 commitment</span>
+          </div>
+        </div>
+        <div class="why-pillar">
+          <div class="wp-icon">▪</div>
+          <div>
+            <div class="wp-title">Every industry, one supplier</div>
+            <div class="wp-desc">One vendor, one invoice, one relationship for all your uniform needs across departments.</div>
+            <span class="wp-tag">Zero hassle</span>
+          </div>
+        </div>
+        <div class="why-pillar">
+          <div class="wp-icon">📍</div>
+          <div>
+            <div class="wp-title">Based in Hyderabad — serve South India</div>
+            <div class="wp-desc">While others send emails, we visit, sample and solve problems face-to-face locally.</div>
+            <span class="wp-tag">Falaknuma, Hyderabad</span>
+          </div>
+        </div>
+        <div class="why-pillar">
+          <div class="wp-icon">↻</div>
+          <div>
+            <div class="wp-title">7-day replacement guarantee</div>
+            <div class="wp-desc">Wrong size or quality issue? We replace at no charge within 7 days, no questions asked.</div>
+            <span class="wp-tag">No-questions replacement</span>
+          </div>
+        </div>
+        <div class="why-pillar">
+          <div class="wp-icon">✏</div>
+          <div>
+            <div class="wp-title">Full branding on every order</div>
+            <div class="wp-desc">Logo embroidery, screen printing, custom colours — your brand exactly as you want it.</div>
+            <span class="wp-tag">Logo · Colour · Size</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="process-header r">
+      <div class="eyebrow">How it works</div>
+      <h2>From enquiry to delivery in 5 steps</h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step r"><div class="step-circle">01</div><div class="step-title">Share requirement</div><div class="step-desc">Tell us your industry, team size and what you need via WhatsApp or the form.</div></div>
+      <div class="process-step r"><div class="step-circle">02</div><div class="step-title">Get a quote</div><div class="step-desc">We send a detailed quote within 24 hours — fabric, pricing, timeline.</div></div>
+      <div class="process-step r"><div class="step-circle">03</div><div class="step-title">Approve sample</div><div class="step-desc">We send a sample with your logo before bulk production begins.</div></div>
+      <div class="process-step r"><div class="step-circle">04</div><div class="step-title">Bulk production</div><div class="step-desc">Your order goes into production with quality checks at every stage.</div></div>
+      <div class="process-step r"><div class="step-circle">05</div><div class="step-title">Delivered on time</div><div class="step-desc">Delivered to your door on the committed date. Pan-India shipping.</div></div>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section class="clients" id="clients">
+    <div class="clients-header r">
+      <div class="eyebrow">Our clients</div>
+      <h2>Trusted by leading brands</h2>
+      <p class="section-sub">We supply some of India's most recognised restaurant chains and hotel groups — brands that demand quality and reliability on every order.</p>
+    </div>
+    <div class="client-tiles">
+      <div class="client-tile r">
+        <div class="ctile-av" style="background:#e8f5ee;color:#1a3d2b;">BN</div>
+        <div><div class="ctile-name">Barbeque Nation</div><div class="ctile-desc">Pan-India restaurant chain · 170+ outlets · Uniforms & linen</div></div>
+      </div>
+      <div class="client-tile r">
+        <div class="ctile-av" style="background:#eeedfe;color:#3c3489;">SJ</div>
+        <div><div class="ctile-name">Sayaji Hotels</div><div class="ctile-desc">Multi-city hotel group · Staff uniforms & linen</div></div>
+      </div>
+      <div class="client-tile r">
+        <div class="ctile-av" style="background:#faece7;color:#712b13;">SS</div>
+        <div><div class="ctile-name">Sara Soule</div><div class="ctile-desc">Premium hospitality brand · Staff uniforms</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE / CONTACT -->
+  <section class="quote" id="quote">
+    <div class="quote-inner">
+      <div class="r">
+        <div class="eyebrow">Get in touch</div>
+        <h2>Tell us what<br>your team needs</h2>
+        <p class="section-sub">Fill the form and we'll get back to you within 24 hours with a quote, fabric options and samples.</p>
+        <div class="contact-list">
+          <div class="contact-row">
+            <div class="c-icon">📞</div>
+            <div>
+              <div class="c-label">WhatsApp / Phone</div>
+              <div class="c-val">+91 63019 55837</div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="c-icon">✉</div>
+            <div>
+              <div class="c-label">Email</div>
+              <div class="c-val" id="email-display"></div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="c-icon">📍</div>
+            <div>
+              <div class="c-label">Address</div>
+              <div class="c-val">18-2-594/1 to 8, Near Risala Playground<br>Jangammet, Falaknuma<br>Hyderabad, Telangana — 500053</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="qform r">
+        <div id="form-success" style="display:none;background:rgba(42,92,64,0.15);border:1px solid rgba(42,92,64,0.4);border-radius:4px;padding:24px;text-align:center;margin-bottom:20px;">
+          <div style="font-size:1.5rem;margin-bottom:10px;">✓</div>
+          <div style="font-family:var(--display);font-size:1rem;font-weight:600;color:#6fcf97;margin-bottom:6px;">Enquiry received!</div>
+          <div style="font-size:.82rem;color:rgba(200,200,184,.6);line-height:1.6;">We will contact you within 24 hours.<br>WhatsApp us directly: <strong style="color:var(--cream);">+91 63019 55837</strong></div>
+        </div>
+        <div id="form-error" style="display:none;background:rgba(192,57,43,0.12);border:1px solid rgba(192,57,43,0.3);border-radius:4px;padding:14px;margin-bottom:14px;">
+          <div style="font-size:.82rem;color:#e57373;">Something went wrong. Please WhatsApp us at +91 63019 55837</div>
+        </div>
+        <form id="enquiry-form" action="https://formspree.io/f/mjgpeyez" method="POST">
+          <div class="frow">
+            <div class="fg"><label class="fl" for="name">Your name</label><input class="fi" id="name" type="text" name="name" placeholder="Full name" required></div>
+            <div class="fg"><label class="fl" for="company">Company</label><input class="fi" id="company" type="text" name="company" placeholder="Company name" required></div>
+          </div>
+          <div class="frow">
+            <div class="fg"><label class="fl" for="phone">Phone / WhatsApp</label><input class="fi" id="phone" type="tel" name="phone" placeholder="+91" required></div>
+            <div class="fg"><label class="fl" for="email">Email</label><input class="fi" id="email" type="email" name="email" placeholder="you@company.com"></div>
+          </div>
+          <div class="fg">
+            <label class="fl" for="industry">Industry</label>
+            <select class="fi" id="industry" name="industry" required>
+              <option value="" disabled selected>Select your industry</option>
+              <option>Corporate</option><option>Healthcare / Hospital</option>
+              <option>Hospitality / Hotel / Restaurant</option><option>Security</option>
+              <option>Education / School</option><option>Industrial / Factory</option>
+              <option>Retail</option><option>Aviation</option><option>Other</option>
+            </select>
+          </div>
+          <div class="frow">
+            <div class="fg"><label class="fl" for="quantity">Quantity</label><input class="fi" id="quantity" type="text" name="quantity" placeholder="e.g. 200 pieces"></div>
+            <div class="fg"><label class="fl" for="timeline">When needed?</label><input class="fi" id="timeline" type="text" name="timeline" placeholder="e.g. within 3 weeks"></div>
+          </div>
+          <div class="fg"><label class="fl" for="requirement">Requirement details</label><textarea class="fi" id="requirement" name="requirement" placeholder="Type of uniform, colours, logo, special requirements..."></textarea></div>
+          <button type="submit" class="fsub" id="submit-btn">Send enquiry — free quote within 24 hrs</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end page-home -->
+
+
+<!-- ════════════════════════════════════ INDUSTRY DETAIL PAGES ════════════════════════════════════ -->
+
+<!-- CORPORATE -->
+<div class="page" id="page-corporate">
+  <div class="ind-detail-hero">
+    <button class="back-btn" onclick="goHome()">Back to all industries</button>
+    <div class="detail-title">Corporate <em>Uniforms</em></div>
+    <p class="detail-sub">Professional attire that builds brand identity, inspires confidence and makes every team member feel proud. Custom logo, colours and sizing on every order.</p>
+    <div class="detail-tags">
+      <span class="detail-tag">Logo embroidery</span><span class="detail-tag">Custom colours</span>
+      <span class="detail-tag">All sizes</span><span class="detail-tag">Pan-India delivery</span><span class="detail-tag">Bulk orders</span>
+    </div>
+  </div>
+  <div class="catalog">
+    <div class="catalog-header r">
+      <div><div class="eyebrow">Corporate range</div><h2>Our uniform styles</h2></div>
+      <button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote for this range</button>
+    </div>
+    <div class="catalog-grid">
+      <div class="prod-card r">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Formal shirt">
+        <div class="prod-body"><div class="prod-name">Formal shirts — men</div><p class="prod-desc">Crisp corporate shirts in white, blue, grey and custom brand colours. Full sleeve and half sleeve available.</p><div class="prod-specs"><span class="prod-spec">Cotton blend</span><span class="prod-spec">Logo embroidery</span><span class="prod-spec">S to 5XL</span></div></div>
+      </div>
+      <div class="prod-card r">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1594938298603-c8148c4b4057?auto=format&fit=crop&w=500&q=80" alt="Ladies formal">
+        <div class="prod-body"><div class="prod-name">Ladies formals & kurtis</div><p class="prod-desc">Elegant formal shirts, kurtis and blazers for women in the office. Available in saree-style combinations.</p><div class="prod-specs"><span class="prod-spec">Wrinkle-free</span><span class="prod-spec">Custom colour</span><span class="prod-spec">All sizes</span></div></div>
+      </div>
+      <div class="prod-card r">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=500&q=80" alt="Blazer suit">
+        <div class="prod-body"><div class="prod-name">Blazers & business suits</div><p class="prod-desc">Premium blazers for managers, front desk staff and executives. Custom lining and lapel colours.</p><div class="prod-specs"><span class="prod-spec">Polyester viscose</span><span class="prod-spec">Tailored fit</span><span class="prod-spec">Logo badge</span></div></div>
+      </div>
+      <div class="prod-card r">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?auto=format&fit=crop&w=500&q=80" alt="Polo T-shirt">
+        <div class="prod-body"><div class="prod-name">Branded polo T-shirts</div><p class="prod-desc">Smart polo shirts for casual corporate environments, IT teams and sales staff. Pique cotton or dri-fit.</p><div class="prod-specs"><span class="prod-spec">Pique / Dri-fit</span><span class="prod-spec">Chest print / embroidery</span><span class="prod-spec">Custom colour</span></div></div>
+      </div>
+      <div class="prod-card r">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=500&q=80" alt="Corporate trousers">
+        <div class="prod-body"><div class="prod-name">Formal trousers</div><p class="prod-desc">Comfortable flat-front and pleated trousers in black, grey, navy and custom colours to match your shirt.</p><div class="prod-specs"><span class="prod-spec">Poly-viscose</span><span class="prod-spec">Stretch waistband</span><span class="prod-spec">28 to 48 inch</span></div></div>
+      </div>
+      <div class="prod-card r">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=500&q=80" alt="Corporate jacket">
+        <div class="prod-body"><div class="prod-name">Corporate jackets & vests</div><p class="prod-desc">Fleece jackets, windbreakers and puffer vests with company logo — great for events, receptions and fieldwork.</p><div class="prod-specs"><span class="prod-spec">Fleece / Nylon</span><span class="prod-spec">Chest embroidery</span><span class="prod-spec">All sizes</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="quote-strip"><div class="qs-text">Ready to uniform your <em>corporate team?</em> Get a free quote within 24 hours.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
 </div>
 
-<!-- INDUSTRIES -->
-<section class="industries" id="industries">
-  <div class="ind-header r">
-    <div>
-      <div class="eyebrow">Industries we serve</div>
-      <h2>Every workforce,<br>uniformed with pride</h2>
-    </div>
-    <p class="section-sub">From boardrooms to factory floors — we design and supply uniforms that make every team look and feel their best.</p>
+<!-- HEALTHCARE -->
+<div class="page" id="page-healthcare">
+  <div class="ind-detail-hero">
+    <button class="back-btn" onclick="goHome()">Back to all industries</button>
+    <div class="detail-title">Healthcare <em>Uniforms</em></div>
+    <p class="detail-sub">Hygienic, comfortable uniforms designed for hospitals, clinics, labs and pharmacies. Durable fabrics that withstand daily washing at high temperatures.</p>
+    <div class="detail-tags"><span class="detail-tag">Anti-microbial fabric</span><span class="detail-tag">Easy wash</span><span class="detail-tag">Logo embroidery</span><span class="detail-tag">Bulk orders</span></div>
   </div>
-  <div class="ind-grid">
-
-    <div class="ind-card r">
-      <img class="ind-photo" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=80" alt="Corporate uniforms">
-      <div class="ind-body">
-        <div class="ind-name">Corporate</div>
-        <p class="ind-desc">Professional attire that builds brand identity and employee confidence.</p>
-        <div class="ind-items">
-          <span class="ind-item">Formal shirts & trousers</span>
-          <span class="ind-item">Blazers & business suits</span>
-          <span class="ind-item">Ladies formals & kurtis</span>
-          <span class="ind-item">Branded T-shirts & polos</span>
-        </div>
-      </div>
-      <div class="ind-bar"></div>
-    </div>
-
-    <div class="ind-card r">
-      <img class="ind-photo" src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=500&q=80" alt="Healthcare uniforms">
-      <div class="ind-body">
-        <div class="ind-name">Healthcare</div>
-        <p class="ind-desc">Comfortable, hygienic uniforms for hospitals, clinics and labs.</p>
-        <div class="ind-items">
-          <span class="ind-item">Doctor & nurse scrubs</span>
-          <span class="ind-item">Lab coats & medical tunics</span>
-          <span class="ind-item">Housekeeping uniforms</span>
-          <span class="ind-item">Patient gowns</span>
-        </div>
-      </div>
-      <div class="ind-bar"></div>
-    </div>
-
-    <div class="ind-card r">
-      <img class="ind-photo" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=500&q=80" alt="Hospitality uniforms">
-      <div class="ind-body">
-        <div class="ind-name">Hospitality</div>
-        <p class="ind-desc">Front-of-house, kitchen and housekeeping uniforms for hotels & restaurants.</p>
-        <div class="ind-items">
-          <span class="ind-item">Chef coats & aprons</span>
-          <span class="ind-item">Front desk & F&B staff</span>
-          <span class="ind-item">Housekeeping uniforms</span>
-          <span class="ind-item">Security & valet</span>
-        </div>
-      </div>
-      <div class="ind-bar"></div>
-    </div>
-
-    <div class="ind-card r">
-      <img class="ind-photo" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=500&q=80" alt="Security uniforms">
-      <div class="ind-body">
-        <div class="ind-name">Security</div>
-        <p class="ind-desc">Authoritative, durable uniforms for security guards and safety personnel.</p>
-        <div class="ind-items">
-          <span class="ind-item">Guard uniforms & shirts</span>
-          <span class="ind-item">Trousers & belts & caps</span>
-          <span class="ind-item">Hi-vis safety vests</span>
-          <span class="ind-item">Accessories & badges</span>
-        </div>
-      </div>
-      <div class="ind-bar"></div>
-    </div>
-
-    <div class="ind-card r">
-      <img class="ind-photo" src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=500&q=80" alt="School uniforms">
-      <div class="ind-body">
-        <div class="ind-name">Education</div>
-        <p class="ind-desc">Smart, durable uniforms for schools, colleges and coaching centres.</p>
-        <div class="ind-items">
-          <span class="ind-item">School shirts, trousers & skirts</span>
-          <span class="ind-item">Blazers & ties</span>
-          <span class="ind-item">Sports & PT uniforms</span>
-          <span class="ind-item">Staff & faculty uniforms</span>
-        </div>
-      </div>
-      <div class="ind-bar"></div>
-    </div>
-
-    <div class="ind-card r">
-      <img class="ind-photo" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=500&q=80" alt="Industrial workwear">
-      <div class="ind-body">
-        <div class="ind-name">Industrial</div>
-        <p class="ind-desc">Heavy-duty workwear designed for factory floors and construction sites.</p>
-        <div class="ind-items">
-          <span class="ind-item">Coveralls & boiler suits</span>
-          <span class="ind-item">Hi-visibility jackets</span>
-          <span class="ind-item">Fire-retardant workwear</span>
-          <span class="ind-item">PPE & safety gear</span>
-        </div>
-      </div>
-      <div class="ind-bar"></div>
-    </div>
-
-    <div class="ind-card r">
-      <img class="ind-photo" src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=500&q=80" alt="Retail uniforms">
-      <div class="ind-body">
-        <div class="ind-name">Retail</div>
-        <p class="ind-desc">Branded uniforms for retail staff that reinforce your store's identity.</p>
-        <div class="ind-items">
-          <span class="ind-item">Branded polos & T-shirts</span>
-          <span class="ind-item">Aprons with logo</span>
-          <span class="ind-item">Jackets & vests</span>
-          <span class="ind-item">Custom colours & prints</span>
-        </div>
-      </div>
-      <div class="ind-bar"></div>
-    </div>
-
-    <div class="ind-card r">
-      <img class="ind-photo" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=500&q=80" alt="Aviation uniforms">
-      <div class="ind-body">
-        <div class="ind-name">Aviation</div>
-        <p class="ind-desc">Polished, regulation-compliant uniforms for ground and cabin crew.</p>
-        <div class="ind-items">
-          <span class="ind-item">Cabin crew uniforms</span>
-          <span class="ind-item">Ground staff attire</span>
-          <span class="ind-item">Airport service uniforms</span>
-          <span class="ind-item">Custom insignia & badges</span>
-        </div>
-      </div>
-      <div class="ind-bar"></div>
-    </div>
-
-  </div>
-</section>
-
-<!-- WHY MQ -->
-<section class="why" id="why">
-  <div class="r">
-    <div class="eyebrow">Why MQ Enterprises</div>
-    <h2>What sets us apart<br>from the rest</h2>
-    <p class="section-sub">Every uniform supplier claims quality. Here's what we actually do differently.</p>
-  </div>
-  <div class="why-inner">
-    <div class="why-photo r">
-      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=700&q=80" alt="Uniform quality">
-      <div class="why-photo-badge">
-        <div class="wpb-num">10+</div>
-        <div class="wpb-label">Years supplying<br>hospitality brands</div>
-      </div>
-    </div>
-    <div class="why-pillars r">
-      <div class="why-pillar">
-        <div class="wp-icon">&#10003;</div>
-        <div>
-          <div class="wp-title">On-time delivery — guaranteed</div>
-          <div class="wp-desc">We commit to a delivery date on every order, confirmed in writing. If we miss it, we make it right immediately.</div>
-          <span class="wp-tag">Our #1 commitment</span>
-        </div>
-      </div>
-      <div class="why-pillar">
-        <div class="wp-icon">&#9646;</div>
-        <div>
-          <div class="wp-title">Every industry, one supplier</div>
-          <div class="wp-desc">Corporate to industrial — one vendor, one invoice, one relationship. No more juggling multiple uniform suppliers.</div>
-          <span class="wp-tag">Zero hassle</span>
-        </div>
-      </div>
-      <div class="why-pillar">
-        <div class="wp-icon">&#128205;</div>
-        <div>
-          <div class="wp-title">South India specialists</div>
-          <div class="wp-desc">Based in Hyderabad, Falaknuma. While others send emails, we visit, sample and solve problems face-to-face.</div>
-          <span class="wp-tag">Hyderabad · Bangalore · Chennai</span>
-        </div>
-      </div>
-      <div class="why-pillar">
-        <div class="wp-icon">&#8635;</div>
-        <div>
-          <div class="wp-title">7-day replacement guarantee</div>
-          <div class="wp-desc">Wrong size or quality issue? We replace at no charge within 7 days — no arguments, no delays.</div>
-          <span class="wp-tag">No-questions replacement</span>
-        </div>
-      </div>
-      <div class="why-pillar">
-        <div class="wp-icon">&#9999;</div>
-        <div>
-          <div class="wp-title">Full branding on every order</div>
-          <div class="wp-desc">Logo embroidery, screen printing, custom colours and sizes — your brand, exactly as you envision it.</div>
-          <span class="wp-tag">Logo · Colour · Size</span>
-        </div>
-      </div>
+  <div class="catalog">
+    <div class="catalog-header r"><div><div class="eyebrow">Healthcare range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote</button></div>
+    <div class="catalog-grid">
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=500&q=80" alt="Nurse scrubs"><div class="prod-body"><div class="prod-name">Nurse scrubs</div><p class="prod-desc">Comfortable, easy-care scrubs for nurses in blue, green, white and custom colours. V-neck and round neck.</p><div class="prod-specs"><span class="prod-spec">Anti-microbial</span><span class="prod-spec">Easy iron</span><span class="prod-spec">XS to 5XL</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=500&q=80" alt="Doctor coat"><div class="prod-body"><div class="prod-name">Doctor lab coats</div><p class="prod-desc">Classic white lab coats with deep pockets and name/designation embroidery. Full sleeve, knee-length.</p><div class="prod-specs"><span class="prod-spec">100% cotton</span><span class="prod-spec">Name embroidery</span><span class="prod-spec">Multiple pockets</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1612531386530-97286d463ebe?auto=format&fit=crop&w=500&q=80" alt="Medical tunic"><div class="prod-body"><div class="prod-name">Medical tunics</div><p class="prod-desc">Short-sleeved tunics for paramedics, lab technicians and pharmacy staff. Comfortable and professional.</p><div class="prod-specs"><span class="prod-spec">Poly-cotton</span><span class="prod-spec">Logo print</span><span class="prod-spec">All sizes</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=500&q=80" alt="Hospital housekeeping"><div class="prod-body"><div class="prod-name">Hospital housekeeping</div><p class="prod-desc">Durable uniforms for hospital cleaning staff — colour-coded by ward or department for easy identification.</p><div class="prod-specs"><span class="prod-spec">Colour-coded</span><span class="prod-spec">Stain-resistant</span><span class="prod-spec">Durable</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=500&q=80" alt="Patient gown"><div class="prod-body"><div class="prod-name">Patient gowns</div><p class="prod-desc">Soft, comfortable patient gowns in cotton. Available in hospital designs with back-tie or side-snap closure.</p><div class="prod-specs"><span class="prod-spec">Soft cotton</span><span class="prod-spec">Back-tie closure</span><span class="prod-spec">Bulk supply</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=500&q=80" alt="Reception staff"><div class="prod-body"><div class="prod-name">Reception & admin uniforms</div><p class="prod-desc">Smart blazers and shirts for hospital reception, billing and admin staff. Professional and patient-friendly.</p><div class="prod-specs"><span class="prod-spec">Formal style</span><span class="prod-spec">Logo badge</span><span class="prod-spec">Custom colour</span></div></div></div>
     </div>
   </div>
-</section>
+  <div class="quote-strip"><div class="qs-text">Equip your <em>healthcare team</em> with hygienic, comfortable uniforms. Get a free quote.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
+</div>
 
-<!-- GALLERY -->
-<section class="gallery">
-  <div class="gallery-header r">
-    <div>
-      <div class="eyebrow">Our work</div>
-      <h2>Uniforms that make<br>an impression</h2>
-    </div>
-    <a href="#quote" class="btn-gold" style="align-self:flex-end">Request samples</a>
+<!-- HOSPITALITY / RESTAURANTS -->
+<div class="page" id="page-hospitality">
+  <div class="ind-detail-hero">
+    <button class="back-btn" onclick="goHome()">Back to all industries</button>
+    <div class="detail-title">Restaurant & Hotel <em>Uniforms</em></div>
+    <p class="detail-sub">From fine dining to fast casual, from front desk to kitchen — we supply every uniform your restaurant or hotel needs, with your logo and brand colours on every piece.</p>
+    <div class="detail-tags"><span class="detail-tag">Barbeque Nation</span><span class="detail-tag">Sayaji Hotels</span><span class="detail-tag">Sara Soule</span><span class="detail-tag">Custom branding</span><span class="detail-tag">Pan-India</span></div>
   </div>
-  <div class="gallery-grid r">
-    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="Office team uniforms">
-    <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=500&q=80" alt="Medical uniforms">
-    <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=500&q=80" alt="Hotel staff">
-    <img src="https://images.unsplash.com/photo-1565087786839-4aaeed14e0e4?auto=format&fit=crop&w=500&q=80" alt="Factory workwear">
-    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=500&q=80" alt="School uniforms">
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process" id="process">
-  <div class="process-header r">
-    <div class="eyebrow">How it works</div>
-    <h2>From enquiry to delivery<br>in 5 simple steps</h2>
-  </div>
-  <div class="process-steps">
-    <div class="process-step r">
-      <div class="step-circle">01</div>
-      <div class="step-title">Share requirement</div>
-      <div class="step-desc">Tell us your industry, team size and what you need via WhatsApp or the form below.</div>
-    </div>
-    <div class="process-step r">
-      <div class="step-circle">02</div>
-      <div class="step-title">Get a quote</div>
-      <div class="step-desc">We send a detailed quote within 24 hours — fabric options, pricing, timeline.</div>
-    </div>
-    <div class="process-step r">
-      <div class="step-circle">03</div>
-      <div class="step-title">Approve sample</div>
-      <div class="step-desc">We send a sample with your logo and colours before bulk production begins.</div>
-    </div>
-    <div class="process-step r">
-      <div class="step-circle">04</div>
-      <div class="step-title">Bulk production</div>
-      <div class="step-desc">Your order goes into production with quality checks at every stage.</div>
-    </div>
-    <div class="process-step r">
-      <div class="step-circle">05</div>
-      <div class="step-title">Delivered on time</div>
-      <div class="step-desc">Delivered to your door on the committed date. Pan-India shipping available.</div>
+  <div class="catalog">
+    <div class="catalog-header r"><div><div class="eyebrow">Hospitality range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote</button></div>
+    <div class="catalog-grid">
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=500&q=80" alt="Chef coat"><div class="prod-body"><div class="prod-name">Chef coats & jackets</div><p class="prod-desc">Classic white and black chef jackets in cotton and poly-cotton blend. Double-breasted with knotted buttons. Custom logo embroidery available.</p><div class="prod-specs"><span class="prod-spec">Cotton / Poly-cotton</span><span class="prod-spec">Logo embroidery</span><span class="prod-spec">All sizes</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=500&q=80" alt="Waiter uniform"><div class="prod-body"><div class="prod-name">Waiter & server uniforms</div><p class="prod-desc">Smart waiter shirts, aprons and trousers for front-of-house staff. Available in white, black, custom colour with logo.</p><div class="prod-specs"><span class="prod-spec">Formal style</span><span class="prod-spec">Wrinkle-resistant</span><span class="prod-spec">Custom colour</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=500&q=80" alt="Kitchen aprons"><div class="prod-body"><div class="prod-name">Kitchen aprons</div><p class="prod-desc">Durable full-body and half-body aprons for kitchen and bar staff. With pockets and adjustable neck strap. Logo print available.</p><div class="prod-specs"><span class="prod-spec">Heavy duty</span><span class="prod-spec">Waterproof option</span><span class="prod-spec">Logo print</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=500&q=80" alt="Hotel front desk"><div class="prod-body"><div class="prod-name">Hotel front desk uniforms</div><p class="prod-desc">Elegant blazers, shirts and sarees for hotel reception, concierge and guest relations staff. Premium look that matches your lobby.</p><div class="prod-specs"><span class="prod-spec">Blazer + shirt set</span><span class="prod-spec">Hotel branding</span><span class="prod-spec">Men & women</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1584622781867-1c5fe959d910?auto=format&fit=crop&w=500&q=80" alt="Housekeeping uniform"><div class="prod-body"><div class="prod-name">Housekeeping uniforms</div><p class="prod-desc">Practical, comfortable housekeeping uniforms for hotel and restaurant cleaning staff. Colour-coded per department.</p><div class="prod-specs"><span class="prod-spec">Easy-care fabric</span><span class="prod-spec">Colour-coded</span><span class="prod-spec">Durable</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=500&q=80" alt="Restaurant linen"><div class="prod-body"><div class="prod-name">Dining napkins & linen</div><p class="prod-desc">Custom napkins, tablecloths and runners with your restaurant logo. Available in any colour and size for fine dining and casual setups.</p><div class="prod-specs"><span class="prod-spec">Custom logo</span><span class="prod-spec">Any colour</span><span class="prod-spec">Any size</span></div></div></div>
     </div>
   </div>
-</section>
+  <div class="quote-strip"><div class="qs-text">Uniform your <em>restaurant or hotel team</em> with pride. Trusted by Barbeque Nation & Sayaji Hotels.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
+</div>
 
-<!-- CLIENTS -->
-<section class="clients" id="clients">
-  <div class="clients-header r">
-    <div class="eyebrow">Our clients</div>
-    <h2>Trusted by India's<br>leading brands</h2>
-    <p class="section-sub">We supply some of India's most recognised restaurant chains and hotel groups — brands that demand quality and on-time delivery, every order.</p>
+<!-- SECURITY -->
+<div class="page" id="page-security">
+  <div class="ind-detail-hero">
+    <button class="back-btn" onclick="goHome()">Back to all industries</button>
+    <div class="detail-title">Security <em>Uniforms</em></div>
+    <p class="detail-sub">Authoritative, durable uniforms for security guards, bouncers and safety personnel. Designed to command respect and withstand daily wear.</p>
+    <div class="detail-tags"><span class="detail-tag">Durable fabric</span><span class="detail-tag">Logo & badge</span><span class="detail-tag">Hi-vis options</span><span class="detail-tag">Bulk supply</span></div>
   </div>
-  <div class="client-tiles">
-    <div class="client-tile r">
-      <div class="ctile-av" style="background:#e8f5ee;color:#1a3d2b;">BN</div>
-      <div>
-        <div class="ctile-name">Barbeque Nation</div>
-        <div class="ctile-desc">Pan-India restaurant chain · 170+ outlets · Uniforms & linen</div>
-      </div>
-    </div>
-    <div class="client-tile r">
-      <div class="ctile-av" style="background:#eeedfe;color:#3c3489;">SJ</div>
-      <div>
-        <div class="ctile-name">Sayaji Hotels</div>
-        <div class="ctile-desc">Multi-city hotel group · Staff uniforms & linen</div>
-      </div>
-    </div>
-    <div class="client-tile r">
-      <div class="ctile-av" style="background:#faece7;color:#712b13;">SS</div>
-      <div>
-        <div class="ctile-name">Sara Soule</div>
-        <div class="ctile-desc">Premium hospitality brand · Staff uniforms</div>
-      </div>
+  <div class="catalog">
+    <div class="catalog-header r"><div><div class="eyebrow">Security range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote</button></div>
+    <div class="catalog-grid">
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=500&q=80" alt="Guard shirt"><div class="prod-body"><div class="prod-name">Guard shirts</div><p class="prod-desc">Classic khaki, navy or black guard shirts with epaulettes and badge holders. Company name/logo embroidery available.</p><div class="prod-specs"><span class="prod-spec">Poly-cotton</span><span class="prod-spec">Epaulettes</span><span class="prod-spec">Badge holder</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=500&q=80" alt="Guard trousers"><div class="prod-body"><div class="prod-name">Guard trousers & belt</div><p class="prod-desc">Durable flat-front trousers in khaki, black and navy with matching belt. Reinforced stitching for daily outdoor use.</p><div class="prod-specs"><span class="prod-spec">Durable fabric</span><span class="prod-spec">Reinforced stitching</span><span class="prod-spec">All waist sizes</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=500&q=80" alt="Hi-vis vest"><div class="prod-body"><div class="prod-name">Hi-visibility vests & jackets</div><p class="prod-desc">Bright orange and yellow hi-vis vests and jackets for traffic, site and event security. Reflective tape strips.</p><div class="prod-specs"><span class="prod-spec">Reflective tape</span><span class="prod-spec">Orange / Yellow</span><span class="prod-spec">Logo print</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=500&q=80" alt="Security cap"><div class="prod-body"><div class="prod-name">Caps & headgear</div><p class="prod-desc">Peaked caps, beret caps and patrolling caps in matching uniform colours. Company logo or badge on the front.</p><div class="prod-specs"><span class="prod-spec">Structured cap</span><span class="prod-spec">Logo badge</span><span class="prod-spec">Adjustable size</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=500&q=80" alt="Full uniform set"><div class="prod-body"><div class="prod-name">Full uniform sets</div><p class="prod-desc">Complete security guard uniform sets — shirt, trousers, belt, cap and tie. Supplied as a complete package per person.</p><div class="prod-specs"><span class="prod-spec">Full set supply</span><span class="prod-spec">Matching colours</span><span class="prod-spec">Bulk pricing</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=500&q=80" alt="Winter jacket"><div class="prod-body"><div class="prod-name">Winter jackets & raincoats</div><p class="prod-desc">Insulated jackets and waterproof raincoats for night security and outdoor guards. Company logo on chest and back.</p><div class="prod-specs"><span class="prod-spec">Waterproof</span><span class="prod-spec">Insulated option</span><span class="prod-spec">Logo front & back</span></div></div></div>
     </div>
   </div>
-</section>
+  <div class="quote-strip"><div class="qs-text">Equip your <em>security team</em> with authoritative, durable uniforms. Free quote in 24 hours.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
+</div>
 
-<!-- QUOTE / CONTACT -->
-<section class="quote" id="quote">
-  <div class="quote-inner">
-    <div class="r">
-      <div class="eyebrow">Get in touch</div>
-      <h2>Tell us what<br>your team needs</h2>
-      <p class="section-sub">Fill the form and we'll get back to you within 24 hours with a quote, fabric options and samples.</p>
-      <div class="contact-list">
-        <div class="contact-row">
-          <div class="c-icon">&#9742;</div>
-          <div>
-            <div class="c-label">WhatsApp / Phone</div>
-            <div class="c-val">+91 63019 55837</div>
-          </div>
-        </div>
-        <div class="contact-row">
-          <div class="c-icon">&#9993;</div>
-          <div>
-            <div class="c-label">Email</div>
-            <div class="c-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d504c585349584f4d4f544e584e0c0b7d5a505c5451135e5250">[email&#160;protected]</a></div>
-          </div>
-        </div>
-        <div class="contact-row">
-          <div class="c-icon">&#9679;</div>
-          <div>
-            <div class="c-label">Address</div>
-            <div class="c-val">18-2-594/1 to 8, Near Risala Playground<br>Jangammet, Falaknuma<br>Hyderabad, Telangana — 500053</div>
-          </div>
-        </div>
-      </div>
-      <div class="map-note">
-        <div class="map-note-icon">&#128205;</div>
-        <div class="map-note-text">
-          Located in Falaknuma, Hyderabad. <a href="https://maps.google.com/?q=Falaknuma+Hyderabad+Telangana+500053" target="_blank">View on Google Maps ↗</a>
-        </div>
-      </div>
-    </div>
-    <div class="qform r">
-
-      <!-- SUCCESS MESSAGE (hidden by default) -->
-      <div id="form-success" style="display:none;background:rgba(42,92,64,0.15);border:1px solid rgba(42,92,64,0.4);border-radius:4px;padding:24px;text-align:center;margin-bottom:20px;">
-        <div style="font-size:1.6rem;margin-bottom:10px;">&#10003;</div>
-        <div style="font-family:var(--display);font-size:1rem;font-weight:600;color:#6fcf97;margin-bottom:6px;">Enquiry received!</div>
-        <div style="font-size:.82rem;color:rgba(200,200,184,.6);line-height:1.6;">We will contact you at your number or email within 24 hours.<br>You can also WhatsApp us directly at <strong style="color:var(--cream);">+91 63019 55837</strong></div>
-      </div>
-
-      <!-- ERROR MESSAGE (hidden by default) -->
-      <div id="form-error" style="display:none;background:rgba(192,57,43,0.12);border:1px solid rgba(192,57,43,0.3);border-radius:4px;padding:16px;margin-bottom:16px;">
-        <div style="font-size:.82rem;color:#e57373;">Something went wrong. Please try again or WhatsApp us at +91 63019 55837</div>
-      </div>
-
-      <form id="enquiry-form" action="https://formspree.io/f/mjgpeyez" method="POST">
-        <div class="frow">
-          <div class="fg">
-            <label class="fl" for="name">Your name</label>
-            <input class="fi" id="name" type="text" name="name" placeholder="Full name" required>
-          </div>
-          <div class="fg">
-            <label class="fl" for="company">Company / Organisation</label>
-            <input class="fi" id="company" type="text" name="company" placeholder="Company name" required>
-          </div>
-        </div>
-        <div class="frow">
-          <div class="fg">
-            <label class="fl" for="phone">Phone / WhatsApp</label>
-            <input class="fi" id="phone" type="tel" name="phone" placeholder="+91" required>
-          </div>
-          <div class="fg">
-            <label class="fl" for="email">Email</label>
-            <input class="fi" id="email" type="email" name="email" placeholder="you@company.com">
-          </div>
-        </div>
-        <div class="fg">
-          <label class="fl" for="industry">Industry</label>
-          <select class="fi" id="industry" name="industry" required>
-            <option value="" disabled selected>Select your industry</option>
-            <option>Corporate</option>
-            <option>Healthcare / Hospital</option>
-            <option>Hospitality / Hotel</option>
-            <option>Security</option>
-            <option>Education / School</option>
-            <option>Industrial / Factory</option>
-            <option>Retail</option>
-            <option>Aviation</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="frow">
-          <div class="fg">
-            <label class="fl" for="quantity">Approximate quantity</label>
-            <input class="fi" id="quantity" type="text" name="quantity" placeholder="e.g. 200 pieces">
-          </div>
-          <div class="fg">
-            <label class="fl" for="timeline">When do you need it?</label>
-            <input class="fi" id="timeline" type="text" name="timeline" placeholder="e.g. within 3 weeks">
-          </div>
-        </div>
-        <div class="fg">
-          <label class="fl" for="requirement">Describe your requirement</label>
-          <textarea class="fi" id="requirement" name="requirement" placeholder="Type of uniform, colours, logo, any special requirements..."></textarea>
-        </div>
-        <button type="submit" class="fsub" id="submit-btn">Send enquiry — free quote within 24 hrs</button>
-      </form>
+<!-- EDUCATION -->
+<div class="page" id="page-education">
+  <div class="ind-detail-hero">
+    <button class="back-btn" onclick="goHome()">Back to all industries</button>
+    <div class="detail-title">School & College <em>Uniforms</em></div>
+    <p class="detail-sub">Smart, durable uniforms for schools, colleges, coaching centres and universities. Built to withstand daily student wear while keeping every student looking sharp.</p>
+    <div class="detail-tags"><span class="detail-tag">Durable fabric</span><span class="detail-tag">School logo</span><span class="detail-tag">All age sizes</span><span class="detail-tag">Sports uniforms</span></div>
+  </div>
+  <div class="catalog">
+    <div class="catalog-header r"><div><div class="eyebrow">Education range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote</button></div>
+    <div class="catalog-grid">
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=500&q=80" alt="School shirt"><div class="prod-body"><div class="prod-name">School shirts</div><p class="prod-desc">White, light blue and custom colour shirts for boys and girls. Half and full sleeve. Collar badge or logo available.</p><div class="prod-specs"><span class="prod-spec">Easy-wash</span><span class="prod-spec">School logo</span><span class="prod-spec">All age sizes</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=500&q=80" alt="School trousers skirts"><div class="prod-body"><div class="prod-name">Trousers, skirts & pinafores</div><p class="prod-desc">Durable school trousers for boys, and pleated skirts and pinafores for girls. Available in all school colours.</p><div class="prod-specs"><span class="prod-spec">Wrinkle-resistant</span><span class="prod-spec">All sizes</span><span class="prod-spec">Custom colour</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=500&q=80" alt="School blazer"><div class="prod-body"><div class="prod-name">School blazers & ties</div><p class="prod-desc">Premium school blazers with school crest on the breast pocket. Matching ties and scarves also available.</p><div class="prod-specs"><span class="prod-spec">School crest</span><span class="prod-spec">Custom colour</span><span class="prod-spec">All sizes</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?auto=format&fit=crop&w=500&q=80" alt="Sports uniform"><div class="prod-body"><div class="prod-name">Sports & PT uniforms</div><p class="prod-desc">Dri-fit T-shirts, track pants and shorts for PT and sports. School logo and house colours available.</p><div class="prod-specs"><span class="prod-spec">Dri-fit fabric</span><span class="prod-spec">House colours</span><span class="prod-spec">All sizes</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=500&q=80" alt="Staff uniform"><div class="prod-body"><div class="prod-name">Teaching staff uniforms</div><p class="prod-desc">Smart shirts, sarees and formal wear for teaching and non-teaching staff. Colour-coded per department.</p><div class="prod-specs"><span class="prod-spec">Formal style</span><span class="prod-spec">Logo embroidery</span><span class="prod-spec">Men & women</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1546833998-877b37c2e5c6?auto=format&fit=crop&w=500&q=80" alt="College uniform"><div class="prod-body"><div class="prod-name">College & university wear</div><p class="prod-desc">Smart casual uniforms for college students — shirts, polos and branded jackets with college logo and batch year.</p><div class="prod-specs"><span class="prod-spec">College logo</span><span class="prod-spec">Batch customisation</span><span class="prod-spec">Bulk pricing</span></div></div></div>
     </div>
   </div>
-</section>
+  <div class="quote-strip"><div class="qs-text">Smart uniforms for <em>every student and staff member.</em> Get a school uniform quote today.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
+</div>
 
-<!-- FOOTER -->
+<!-- INDUSTRIAL -->
+<div class="page" id="page-industrial">
+  <div class="ind-detail-hero">
+    <button class="back-btn" onclick="goHome()">Back to all industries</button>
+    <div class="detail-title">Industrial <em>Workwear</em></div>
+    <p class="detail-sub">Heavy-duty workwear for factory floors, construction sites and manufacturing units. Built for safety, durability and comfort during long shifts.</p>
+    <div class="detail-tags"><span class="detail-tag">Heavy-duty fabric</span><span class="detail-tag">Safety compliant</span><span class="detail-tag">Hi-vis options</span><span class="detail-tag">Bulk supply</span></div>
+  </div>
+  <div class="catalog">
+    <div class="catalog-header r"><div><div class="eyebrow">Industrial range</div><h2>Our workwear styles</h2></div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote</button></div>
+    <div class="catalog-grid">
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=500&q=80" alt="Coverall"><div class="prod-body"><div class="prod-name">Coveralls & boiler suits</div><p class="prod-desc">Full-body coveralls in poly-cotton for factory and maintenance workers. Zip front with multiple pockets.</p><div class="prod-specs"><span class="prod-spec">Poly-cotton</span><span class="prod-spec">Multiple pockets</span><span class="prod-spec">Company logo</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1618354691438-25bc04584c23?auto=format&fit=crop&w=500&q=80" alt="Hi-vis jacket"><div class="prod-body"><div class="prod-name">Hi-visibility jackets</div><p class="prod-desc">Fluorescent orange and yellow safety jackets with reflective tape strips for site and construction workers.</p><div class="prod-specs"><span class="prod-spec">EN ISO compliant</span><span class="prod-spec">Reflective strips</span><span class="prod-spec">Logo print</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80" alt="Factory shirt"><div class="prod-body"><div class="prod-name">Factory shirts & trousers</div><p class="prod-desc">Durable work shirts and cargo trousers for plant and factory workers. Reinforced stitching and multiple cargo pockets.</p><div class="prod-specs"><span class="prod-spec">Durable weave</span><span class="prod-spec">Cargo pockets</span><span class="prod-spec">All sizes</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?auto=format&fit=crop&w=500&q=80" alt="Welding jacket"><div class="prod-body"><div class="prod-name">Fire-retardant workwear</div><p class="prod-desc">FR-rated jackets and trousers for welders, electricians and fire safety personnel. Treated fabric that resists ignition.</p><div class="prod-specs"><span class="prod-spec">FR-rated fabric</span><span class="prod-spec">Safety certified</span><span class="prod-spec">Custom logo</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=500&q=80" alt="Winter workwear"><div class="prod-body"><div class="prod-name">Winter workwear</div><p class="prod-desc">Insulated jackets, fleece liners and windbreakers for outdoor and cold-storage workers. Company branding available.</p><div class="prod-specs"><span class="prod-spec">Insulated</span><span class="prod-spec">Windproof</span><span class="prod-spec">Company logo</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=500&q=80" alt="Safety vest"><div class="prod-body"><div class="prod-name">Safety vests & PPE</div><p class="prod-desc">Mesh safety vests, hard-hat liners and PPE accessories. Compliant with Indian safety standards for industrial use.</p><div class="prod-specs"><span class="prod-spec">Safety compliant</span><span class="prod-spec">Breathable mesh</span><span class="prod-spec">Bulk supply</span></div></div></div>
+    </div>
+  </div>
+  <div class="quote-strip"><div class="qs-text">Keep your <em>workforce safe and uniformed.</em> Get a free industrial workwear quote.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
+</div>
+
+<!-- RETAIL -->
+<div class="page" id="page-retail">
+  <div class="ind-detail-hero">
+    <button class="back-btn" onclick="goHome()">Back to all industries</button>
+    <div class="detail-title">Retail Staff <em>Uniforms</em></div>
+    <p class="detail-sub">Branded uniforms for retail staff that make your store look professional and reinforce your brand identity every time a customer walks in.</p>
+    <div class="detail-tags"><span class="detail-tag">Custom branding</span><span class="detail-tag">Any colour</span><span class="detail-tag">Logo print & embroidery</span><span class="detail-tag">Bulk pricing</span></div>
+  </div>
+  <div class="catalog">
+    <div class="catalog-header r"><div><div class="eyebrow">Retail range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote</button></div>
+    <div class="catalog-grid">
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=500&q=80" alt="Retail polo"><div class="prod-body"><div class="prod-name">Branded polo T-shirts</div><p class="prod-desc">Smart polo shirts with store logo for shop floor staff. Available in any colour matching your brand. Pique cotton or dri-fit.</p><div class="prod-specs"><span class="prod-spec">Logo embroidery</span><span class="prod-spec">Any brand colour</span><span class="prod-spec">S to 5XL</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=500&q=80" alt="Retail apron"><div class="prod-body"><div class="prod-name">Retail & store aprons</div><p class="prod-desc">Full and half aprons for store staff — electronics, grocery, pharmacy and more. Logo printed on chest pocket.</p><div class="prod-specs"><span class="prod-spec">Logo print</span><span class="prod-spec">Multiple pockets</span><span class="prod-spec">Custom colour</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=500&q=80" alt="Retail blazer"><div class="prod-body"><div class="prod-name">Retail staff blazers</div><p class="prod-desc">Smart blazers for premium retail, showrooms, jewellery stores and luxury brands. Brand logo on chest or lapel.</p><div class="prod-specs"><span class="prod-spec">Premium look</span><span class="prod-spec">Logo badge</span><span class="prod-spec">Men & women</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?auto=format&fit=crop&w=500&q=80" alt="Branded T-shirt"><div class="prod-body"><div class="prod-name">Round-neck branded T-shirts</div><p class="prod-desc">Casual branded T-shirts for grocery stores, warehouses and delivery staff. Front and back logo printing available.</p><div class="prod-specs"><span class="prod-spec">Front & back print</span><span class="prod-spec">180 GSM cotton</span><span class="prod-spec">All sizes</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=500&q=80" alt="Retail vest jacket"><div class="prod-body"><div class="prod-name">Staff vests & jackets</div><p class="prod-desc">Branded vests and windbreakers for outdoor staff, delivery personnel and event teams. Large logo on back.</p><div class="prod-specs"><span class="prod-spec">Large back print</span><span class="prod-spec">Pockets</span><span class="prod-spec">Custom colour</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=500&q=80" alt="Uniform set"><div class="prod-body"><div class="prod-name">Complete uniform sets</div><p class="prod-desc">Full uniform sets — shirt/polo + trousers/skirt — supplied as a complete per-person package with your branding.</p><div class="prod-specs"><span class="prod-spec">Full set</span><span class="prod-spec">Bulk pricing</span><span class="prod-spec">Any brand colour</span></div></div></div>
+    </div>
+  </div>
+  <div class="quote-strip"><div class="qs-text">Make your <em>retail team look great</em> and on-brand. Get a free uniform quote today.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
+</div>
+
+<!-- AVIATION -->
+<div class="page" id="page-aviation">
+  <div class="ind-detail-hero">
+    <button class="back-btn" onclick="goHome()">Back to all industries</button>
+    <div class="detail-title">Aviation <em>Uniforms</em></div>
+    <p class="detail-sub">Polished, regulation-compliant uniforms for cabin crew, ground staff and airport service teams. Premium fabrics that hold their shape through long shifts.</p>
+    <div class="detail-tags"><span class="detail-tag">Regulation compliant</span><span class="detail-tag">Premium fabric</span><span class="detail-tag">Custom insignia</span><span class="detail-tag">Men & women</span></div>
+  </div>
+  <div class="catalog">
+    <div class="catalog-header r"><div><div class="eyebrow">Aviation range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote</button></div>
+    <div class="catalog-grid">
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=500&q=80" alt="Cabin crew uniform"><div class="prod-body"><div class="prod-name">Cabin crew uniforms</div><p class="prod-desc">Elegant blazer and skirt/trouser sets for female cabin crew. Jacket and trouser sets for male crew. Custom airline colours and insignia.</p><div class="prod-specs"><span class="prod-spec">Wrinkle-free</span><span class="prod-spec">Airline insignia</span><span class="prod-spec">Custom colours</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=500&q=80" alt="Ground staff"><div class="prod-body"><div class="prod-name">Ground staff uniforms</div><p class="prod-desc">Smart shirts, trousers and hi-vis vests for ground handling, check-in and baggage staff. Durable and easy to maintain.</p><div class="prod-specs"><span class="prod-spec">Hi-vis option</span><span class="prod-spec">Logo embroidery</span><span class="prod-spec">All sizes</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=500&q=80" alt="Airport service"><div class="prod-body"><div class="prod-name">Airport service uniforms</div><p class="prod-desc">Smart uniforms for lounge staff, porters, customer service and retail personnel at airports.</p><div class="prod-specs"><span class="prod-spec">Professional style</span><span class="prod-spec">Custom logo</span><span class="prod-spec">Men & women</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=500&q=80" alt="Pilot uniform"><div class="prod-body"><div class="prod-name">Pilot shirts & epaulettes</div><p class="prod-desc">Crisp pilot shirts with shoulder epaulettes and rank stripes. White and custom colours for private airlines and charter services.</p><div class="prod-specs"><span class="prod-spec">Rank stripes</span><span class="prod-spec">Epaulettes</span><span class="prod-spec">Wing badge</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=500&q=80" alt="Winter aviation jacket"><div class="prod-body"><div class="prod-name">Aviation jackets</div><p class="prod-desc">Smart windbreaker and fleece jackets for tarmac and ground crew. Airline logo on chest and back.</p><div class="prod-specs"><span class="prod-spec">Windproof</span><span class="prod-spec">Front & back logo</span><span class="prod-spec">All sizes</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=500&q=80" alt="Aviation cap"><div class="prod-body"><div class="prod-name">Aviation caps & accessories</div><p class="prod-desc">Peaked officer caps, scarves and ties to complete the aviation uniform set. Custom insignia and colours available.</p><div class="prod-specs"><span class="prod-spec">Officer cap</span><span class="prod-spec">Custom insignia</span><span class="prod-spec">Matching set</span></div></div></div>
+    </div>
+  </div>
+  <div class="quote-strip"><div class="qs-text">Professional uniforms for your <em>aviation team.</em> Get a free quote within 24 hours.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
+</div>
+
+<!-- FOOTER (shared) -->
 <footer>
   <div class="foot-brand">MQ <span>Enterprises</span></div>
-  <div class="foot-copy">© 2026 MQ Enterprises · <a href="mailto:mqenterprises16@gmail.com">mqenterprises16@gmail.com</a>[email&#160;protected]</a> · +91 63019 55837</div>
+  <div class="foot-copy">© 2026 MQ Enterprises · <span id="footer-email"></span> · +91 63019 55837</div>
   <div class="foot-right">Falaknuma, Hyderabad · Pan-India delivery</div>
 </footer>
 
 <script>
+// Build email via JS — prevents Cloudflare from hiding it
+(function(){
+  const u='mqenterprises16';
+  const d='gmail.com';
+  const email=u+'@'+d;
+  const link='<a href="mailto:'+email+'" style="color:var(--accent);text-decoration:none;">'+email+'</a>';
+  const el=document.getElementById('email-display');
+  const fel=document.getElementById('footer-email');
+  if(el) el.innerHTML=link;
+  if(fel) fel.textContent=email;
+})();
+
+// NAV scroll
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{nav.classList.toggle('up',scrollY>40)});
 
+// Page switching
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  // Re-trigger reveal animations for new page
+  setTimeout(()=>{
+    document.querySelectorAll('#'+id+' .r').forEach((el,i)=>{
+      setTimeout(()=>el.classList.add('on'),i*60);
+    });
+  },100);
+}
+
+function showIndustry(name){showPage('page-'+name)}
+
+function goHome(){
+  showPage('page-home');
+}
+
+function scrollTo(selector){
+  setTimeout(()=>{
+    const el=document.querySelector(selector);
+    if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+  },200);
+}
+
+// Scroll reveal for home page
 const obs=new IntersectionObserver(entries=>{
   entries.forEach((e,i)=>{
     if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*60);obs.unobserve(e.target)}
   });
 },{threshold:.08});
-document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+document.querySelectorAll('#page-home .r').forEach(el=>obs.observe(el));
 
+// Formspree form
 const form=document.getElementById('enquiry-form');
 const btn=document.getElementById('submit-btn');
 const successEl=document.getElementById('form-success');
@@ -705,10 +870,8 @@ form.addEventListener('submit',async function(e){
       form.style.display='none';
       successEl.style.display='block';
       successEl.scrollIntoView({behavior:'smooth',block:'center'});
-    } else {
-      throw new Error('failed');
-    }
-  } catch(err){
+    }else{throw new Error('failed')}
+  }catch(err){
     errorEl.style.display='block';
     btn.textContent='Send enquiry — free quote within 24 hrs';
     btn.disabled=false;
