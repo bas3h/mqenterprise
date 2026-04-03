@@ -229,11 +229,11 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
 <nav id="nav">
   <div class="nav-brand" onclick="goHome()">MQ <span>Enterprises</span></div>
   <ul class="nav-links">
-    <li><a onclick="goHome();scrollTo('#industries')">Industries</a></li>
-    <li><a onclick="goHome();scrollTo('#why')">Why MQ</a></li>
-    <li><a onclick="goHome();scrollTo('#clients')">Clients</a></li>
+    <li><a onclick="goHome();goSection('industries')">Industries</a></li>
+    <li><a onclick="goHome();goSection('why')">Why MQ</a></li>
+    <li><a onclick="goHome();goSection('clients')">Clients</a></li>
   </ul>
-  <a class="nav-quote" onclick="goHome();scrollTo('#quote')">Get a quote</a>
+  <a class="nav-quote" onclick="goHome();goSection('quote')">Get a quote</a>
 </nav>
 
 <!-- ════════════════════════════════════════ HOME PAGE ════════════════════════════════════════ -->
@@ -246,14 +246,14 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
       <h1>Uniforms for<br>every <em>industry</em>,<br>every team.</h1>
       <p class="hero-desc">MQ Enterprises supplies premium branded uniforms to corporates, hospitals, hotels, schools, security firms, retail chains and more — across India. One supplier. Every industry.</p>
       <div class="hero-btns">
-        <button class="btn-gold" onclick="scrollTo('#quote')">Get a free quote</button>
-        <button class="btn-ghost" onclick="scrollTo('#industries')">Explore industries</button>
+        <button class="btn-gold" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth',block:'start'})">Get a free quote</button>
+        <button class="btn-ghost" onclick="document.getElementById('industries').scrollIntoView({behavior:'smooth',block:'start'})">Explore industries</button>
       </div>
     </div>
     <div class="hero-right">
       <div class="hero-photo-grid">
-        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=600&q=80" alt="Corporate uniforms">
-        <img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=400&q=80" alt="Healthcare uniforms">
+        <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=600&q=80" alt="Corporate uniforms">
+        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=400&q=80" alt="Healthcare uniforms">
         <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=400&q=80" alt="Hotel staff">
       </div>
       <div class="hero-stats">
@@ -298,7 +298,7 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
     <div class="ind-grid">
 
       <div class="ind-card r" onclick="showIndustry('corporate')">
-        <img class="ind-photo" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=80" alt="Corporate">
+        <img class="ind-photo" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80" alt="Corporate">
         <div class="ind-body">
           <div class="ind-name">Corporate</div>
           <p class="ind-desc">Professional attire that builds brand identity and confidence.</p>
@@ -313,7 +313,7 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
       </div>
 
       <div class="ind-card r" onclick="showIndustry('healthcare')">
-        <img class="ind-photo" src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=500&q=80" alt="Healthcare">
+        <img class="ind-photo" src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=500&q=80" alt="Healthcare">
         <div class="ind-body">
           <div class="ind-name">Healthcare</div>
           <p class="ind-desc">Hygienic, comfortable uniforms for hospitals and clinics.</p>
@@ -343,7 +343,7 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
       </div>
 
       <div class="ind-card r" onclick="showIndustry('security')">
-        <img class="ind-photo" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=500&q=80" alt="Security">
+        <img class="ind-photo" src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?auto=format&fit=crop&w=500&q=80" alt="Security">
         <div class="ind-body">
           <div class="ind-name">Security</div>
           <p class="ind-desc">Authoritative, durable uniforms for security personnel.</p>
@@ -388,7 +388,7 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
       </div>
 
       <div class="ind-card r" onclick="showIndustry('retail')">
-        <img class="ind-photo" src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=500&q=80" alt="Retail">
+        <img class="ind-photo" src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=500&q=80" alt="Retail">
         <div class="ind-body">
           <div class="ind-name">Retail</div>
           <p class="ind-desc">Branded uniforms that reinforce your store identity.</p>
@@ -429,7 +429,7 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
     </div>
     <div class="why-inner">
       <div class="why-photo r">
-        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=700&q=80" alt="Quality uniforms">
+        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=700&q=80" alt="Quality uniforms">
         <div class="why-photo-badge">
           <div class="wpb-num">10+</div>
           <div class="wpb-label">Years supplying<br>hospitality brands</div>
@@ -607,7 +607,7 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
   <div class="catalog">
     <div class="catalog-header r">
       <div><div class="eyebrow">Corporate range</div><h2>Our uniform styles</h2></div>
-      <button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote for this range</button>
+      <button class="btn-gold" onclick="goHome();goSection('quote')">Get a quote for this range</button>
     </div>
     <div class="catalog-grid">
       <div class="prod-card r">
@@ -636,7 +636,7 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
       </div>
     </div>
   </div>
-  <div class="quote-strip"><div class="qs-text">Ready to uniform your <em>corporate team?</em> Get a free quote within 24 hours.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
+  <div class="quote-strip"><div class="qs-text">Ready to uniform your <em>corporate team?</em> Get a free quote within 24 hours.</div><button class="btn-gold" onclick="goHome();goSection('quote')">Get free quote →</button></div>
 </div>
 
 <!-- HEALTHCARE -->
@@ -648,17 +648,17 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
     <div class="detail-tags"><span class="detail-tag">Anti-microbial fabric</span><span class="detail-tag">Easy wash</span><span class="detail-tag">Logo embroidery</span><span class="detail-tag">Bulk orders</span></div>
   </div>
   <div class="catalog">
-    <div class="catalog-header r"><div><div class="eyebrow">Healthcare range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote</button></div>
+    <div class="catalog-header r"><div><div class="eyebrow">Healthcare range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();goSection('quote')">Get a quote</button></div>
     <div class="catalog-grid">
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=500&q=80" alt="Nurse scrubs"><div class="prod-body"><div class="prod-name">Nurse scrubs</div><p class="prod-desc">Comfortable, easy-care scrubs for nurses in blue, green, white and custom colours. V-neck and round neck.</p><div class="prod-specs"><span class="prod-spec">Anti-microbial</span><span class="prod-spec">Easy iron</span><span class="prod-spec">XS to 5XL</span></div></div></div>
-      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=500&q=80" alt="Doctor coat"><div class="prod-body"><div class="prod-name">Doctor lab coats</div><p class="prod-desc">Classic white lab coats with deep pockets and name/designation embroidery. Full sleeve, knee-length.</p><div class="prod-specs"><span class="prod-spec">100% cotton</span><span class="prod-spec">Name embroidery</span><span class="prod-spec">Multiple pockets</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=500&q=80" alt="Doctor coat"><div class="prod-body"><div class="prod-name">Doctor lab coats</div><p class="prod-desc">Classic white lab coats with deep pockets and name/designation embroidery. Full sleeve, knee-length.</p><div class="prod-specs"><span class="prod-spec">100% cotton</span><span class="prod-spec">Name embroidery</span><span class="prod-spec">Multiple pockets</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1612531386530-97286d463ebe?auto=format&fit=crop&w=500&q=80" alt="Medical tunic"><div class="prod-body"><div class="prod-name">Medical tunics</div><p class="prod-desc">Short-sleeved tunics for paramedics, lab technicians and pharmacy staff. Comfortable and professional.</p><div class="prod-specs"><span class="prod-spec">Poly-cotton</span><span class="prod-spec">Logo print</span><span class="prod-spec">All sizes</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=500&q=80" alt="Hospital housekeeping"><div class="prod-body"><div class="prod-name">Hospital housekeeping</div><p class="prod-desc">Durable uniforms for hospital cleaning staff — colour-coded by ward or department for easy identification.</p><div class="prod-specs"><span class="prod-spec">Colour-coded</span><span class="prod-spec">Stain-resistant</span><span class="prod-spec">Durable</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=500&q=80" alt="Patient gown"><div class="prod-body"><div class="prod-name">Patient gowns</div><p class="prod-desc">Soft, comfortable patient gowns in cotton. Available in hospital designs with back-tie or side-snap closure.</p><div class="prod-specs"><span class="prod-spec">Soft cotton</span><span class="prod-spec">Back-tie closure</span><span class="prod-spec">Bulk supply</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=500&q=80" alt="Reception staff"><div class="prod-body"><div class="prod-name">Reception & admin uniforms</div><p class="prod-desc">Smart blazers and shirts for hospital reception, billing and admin staff. Professional and patient-friendly.</p><div class="prod-specs"><span class="prod-spec">Formal style</span><span class="prod-spec">Logo badge</span><span class="prod-spec">Custom colour</span></div></div></div>
     </div>
   </div>
-  <div class="quote-strip"><div class="qs-text">Equip your <em>healthcare team</em> with hygienic, comfortable uniforms. Get a free quote.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
+  <div class="quote-strip"><div class="qs-text">Equip your <em>healthcare team</em> with hygienic, comfortable uniforms. Get a free quote.</div><button class="btn-gold" onclick="goHome();goSection('quote')">Get free quote →</button></div>
 </div>
 
 <!-- HOSPITALITY / RESTAURANTS -->
@@ -670,17 +670,17 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
     <div class="detail-tags"><span class="detail-tag">Barbeque Nation</span><span class="detail-tag">Sayaji Hotels</span><span class="detail-tag">Sara Soule</span><span class="detail-tag">Custom branding</span><span class="detail-tag">Pan-India</span></div>
   </div>
   <div class="catalog">
-    <div class="catalog-header r"><div><div class="eyebrow">Hospitality range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote</button></div>
+    <div class="catalog-header r"><div><div class="eyebrow">Hospitality range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();goSection('quote')">Get a quote</button></div>
     <div class="catalog-grid">
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=500&q=80" alt="Chef coat"><div class="prod-body"><div class="prod-name">Chef coats & jackets</div><p class="prod-desc">Classic white and black chef jackets in cotton and poly-cotton blend. Double-breasted with knotted buttons. Custom logo embroidery available.</p><div class="prod-specs"><span class="prod-spec">Cotton / Poly-cotton</span><span class="prod-spec">Logo embroidery</span><span class="prod-spec">All sizes</span></div></div></div>
-      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=500&q=80" alt="Waiter uniform"><div class="prod-body"><div class="prod-name">Waiter & server uniforms</div><p class="prod-desc">Smart waiter shirts, aprons and trousers for front-of-house staff. Available in white, black, custom colour with logo.</p><div class="prod-specs"><span class="prod-spec">Formal style</span><span class="prod-spec">Wrinkle-resistant</span><span class="prod-spec">Custom colour</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1552566626-52f8b828a592?auto=format&fit=crop&w=500&q=80" alt="Waiter uniform"><div class="prod-body"><div class="prod-name">Waiter & server uniforms</div><p class="prod-desc">Smart waiter shirts, aprons and trousers for front-of-house staff. Available in white, black, custom colour with logo.</p><div class="prod-specs"><span class="prod-spec">Formal style</span><span class="prod-spec">Wrinkle-resistant</span><span class="prod-spec">Custom colour</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=500&q=80" alt="Kitchen aprons"><div class="prod-body"><div class="prod-name">Kitchen aprons</div><p class="prod-desc">Durable full-body and half-body aprons for kitchen and bar staff. With pockets and adjustable neck strap. Logo print available.</p><div class="prod-specs"><span class="prod-spec">Heavy duty</span><span class="prod-spec">Waterproof option</span><span class="prod-spec">Logo print</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=500&q=80" alt="Hotel front desk"><div class="prod-body"><div class="prod-name">Hotel front desk uniforms</div><p class="prod-desc">Elegant blazers, shirts and sarees for hotel reception, concierge and guest relations staff. Premium look that matches your lobby.</p><div class="prod-specs"><span class="prod-spec">Blazer + shirt set</span><span class="prod-spec">Hotel branding</span><span class="prod-spec">Men & women</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1584622781867-1c5fe959d910?auto=format&fit=crop&w=500&q=80" alt="Housekeeping uniform"><div class="prod-body"><div class="prod-name">Housekeeping uniforms</div><p class="prod-desc">Practical, comfortable housekeeping uniforms for hotel and restaurant cleaning staff. Colour-coded per department.</p><div class="prod-specs"><span class="prod-spec">Easy-care fabric</span><span class="prod-spec">Colour-coded</span><span class="prod-spec">Durable</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=500&q=80" alt="Restaurant linen"><div class="prod-body"><div class="prod-name">Dining napkins & linen</div><p class="prod-desc">Custom napkins, tablecloths and runners with your restaurant logo. Available in any colour and size for fine dining and casual setups.</p><div class="prod-specs"><span class="prod-spec">Custom logo</span><span class="prod-spec">Any colour</span><span class="prod-spec">Any size</span></div></div></div>
     </div>
   </div>
-  <div class="quote-strip"><div class="qs-text">Uniform your <em>restaurant or hotel team</em> with pride. Trusted by Barbeque Nation & Sayaji Hotels.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
+  <div class="quote-strip"><div class="qs-text">Uniform your <em>restaurant or hotel team</em> with pride. Trusted by Barbeque Nation & Sayaji Hotels.</div><button class="btn-gold" onclick="goHome();goSection('quote')">Get free quote →</button></div>
 </div>
 
 <!-- SECURITY -->
@@ -692,9 +692,9 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
     <div class="detail-tags"><span class="detail-tag">Durable fabric</span><span class="detail-tag">Logo & badge</span><span class="detail-tag">Hi-vis options</span><span class="detail-tag">Bulk supply</span></div>
   </div>
   <div class="catalog">
-    <div class="catalog-header r"><div><div class="eyebrow">Security range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote</button></div>
+    <div class="catalog-header r"><div><div class="eyebrow">Security range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();goSection('quote')">Get a quote</button></div>
     <div class="catalog-grid">
-      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=500&q=80" alt="Guard shirt"><div class="prod-body"><div class="prod-name">Guard shirts</div><p class="prod-desc">Classic khaki, navy or black guard shirts with epaulettes and badge holders. Company name/logo embroidery available.</p><div class="prod-specs"><span class="prod-spec">Poly-cotton</span><span class="prod-spec">Epaulettes</span><span class="prod-spec">Badge holder</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?auto=format&fit=crop&w=500&q=80" alt="Guard shirt"><div class="prod-body"><div class="prod-name">Guard shirts</div><p class="prod-desc">Classic khaki, navy or black guard shirts with epaulettes and badge holders. Company name/logo embroidery available.</p><div class="prod-specs"><span class="prod-spec">Poly-cotton</span><span class="prod-spec">Epaulettes</span><span class="prod-spec">Badge holder</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=500&q=80" alt="Guard trousers"><div class="prod-body"><div class="prod-name">Guard trousers & belt</div><p class="prod-desc">Durable flat-front trousers in khaki, black and navy with matching belt. Reinforced stitching for daily outdoor use.</p><div class="prod-specs"><span class="prod-spec">Durable fabric</span><span class="prod-spec">Reinforced stitching</span><span class="prod-spec">All waist sizes</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=500&q=80" alt="Hi-vis vest"><div class="prod-body"><div class="prod-name">Hi-visibility vests & jackets</div><p class="prod-desc">Bright orange and yellow hi-vis vests and jackets for traffic, site and event security. Reflective tape strips.</p><div class="prod-specs"><span class="prod-spec">Reflective tape</span><span class="prod-spec">Orange / Yellow</span><span class="prod-spec">Logo print</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=500&q=80" alt="Security cap"><div class="prod-body"><div class="prod-name">Caps & headgear</div><p class="prod-desc">Peaked caps, beret caps and patrolling caps in matching uniform colours. Company logo or badge on the front.</p><div class="prod-specs"><span class="prod-spec">Structured cap</span><span class="prod-spec">Logo badge</span><span class="prod-spec">Adjustable size</span></div></div></div>
@@ -702,7 +702,7 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=500&q=80" alt="Winter jacket"><div class="prod-body"><div class="prod-name">Winter jackets & raincoats</div><p class="prod-desc">Insulated jackets and waterproof raincoats for night security and outdoor guards. Company logo on chest and back.</p><div class="prod-specs"><span class="prod-spec">Waterproof</span><span class="prod-spec">Insulated option</span><span class="prod-spec">Logo front & back</span></div></div></div>
     </div>
   </div>
-  <div class="quote-strip"><div class="qs-text">Equip your <em>security team</em> with authoritative, durable uniforms. Free quote in 24 hours.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
+  <div class="quote-strip"><div class="qs-text">Equip your <em>security team</em> with authoritative, durable uniforms. Free quote in 24 hours.</div><button class="btn-gold" onclick="goHome();goSection('quote')">Get free quote →</button></div>
 </div>
 
 <!-- EDUCATION -->
@@ -714,17 +714,17 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
     <div class="detail-tags"><span class="detail-tag">Durable fabric</span><span class="detail-tag">School logo</span><span class="detail-tag">All age sizes</span><span class="detail-tag">Sports uniforms</span></div>
   </div>
   <div class="catalog">
-    <div class="catalog-header r"><div><div class="eyebrow">Education range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote</button></div>
+    <div class="catalog-header r"><div><div class="eyebrow">Education range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();goSection('quote')">Get a quote</button></div>
     <div class="catalog-grid">
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=500&q=80" alt="School shirt"><div class="prod-body"><div class="prod-name">School shirts</div><p class="prod-desc">White, light blue and custom colour shirts for boys and girls. Half and full sleeve. Collar badge or logo available.</p><div class="prod-specs"><span class="prod-spec">Easy-wash</span><span class="prod-spec">School logo</span><span class="prod-spec">All age sizes</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=500&q=80" alt="School trousers skirts"><div class="prod-body"><div class="prod-name">Trousers, skirts & pinafores</div><p class="prod-desc">Durable school trousers for boys, and pleated skirts and pinafores for girls. Available in all school colours.</p><div class="prod-specs"><span class="prod-spec">Wrinkle-resistant</span><span class="prod-spec">All sizes</span><span class="prod-spec">Custom colour</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=500&q=80" alt="School blazer"><div class="prod-body"><div class="prod-name">School blazers & ties</div><p class="prod-desc">Premium school blazers with school crest on the breast pocket. Matching ties and scarves also available.</p><div class="prod-specs"><span class="prod-spec">School crest</span><span class="prod-spec">Custom colour</span><span class="prod-spec">All sizes</span></div></div></div>
-      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?auto=format&fit=crop&w=500&q=80" alt="Sports uniform"><div class="prod-body"><div class="prod-name">Sports & PT uniforms</div><p class="prod-desc">Dri-fit T-shirts, track pants and shorts for PT and sports. School logo and house colours available.</p><div class="prod-specs"><span class="prod-spec">Dri-fit fabric</span><span class="prod-spec">House colours</span><span class="prod-spec">All sizes</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=500&q=80" alt="Sports uniform"><div class="prod-body"><div class="prod-name">Sports & PT uniforms</div><p class="prod-desc">Dri-fit T-shirts, track pants and shorts for PT and sports. School logo and house colours available.</p><div class="prod-specs"><span class="prod-spec">Dri-fit fabric</span><span class="prod-spec">House colours</span><span class="prod-spec">All sizes</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=500&q=80" alt="Staff uniform"><div class="prod-body"><div class="prod-name">Teaching staff uniforms</div><p class="prod-desc">Smart shirts, sarees and formal wear for teaching and non-teaching staff. Colour-coded per department.</p><div class="prod-specs"><span class="prod-spec">Formal style</span><span class="prod-spec">Logo embroidery</span><span class="prod-spec">Men & women</span></div></div></div>
-      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1546833998-877b37c2e5c6?auto=format&fit=crop&w=500&q=80" alt="College uniform"><div class="prod-body"><div class="prod-name">College & university wear</div><p class="prod-desc">Smart casual uniforms for college students — shirts, polos and branded jackets with college logo and batch year.</p><div class="prod-specs"><span class="prod-spec">College logo</span><span class="prod-spec">Batch customisation</span><span class="prod-spec">Bulk pricing</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=500&q=80" alt="College uniform"><div class="prod-body"><div class="prod-name">College & university wear</div><p class="prod-desc">Smart casual uniforms for college students — shirts, polos and branded jackets with college logo and batch year.</p><div class="prod-specs"><span class="prod-spec">College logo</span><span class="prod-spec">Batch customisation</span><span class="prod-spec">Bulk pricing</span></div></div></div>
     </div>
   </div>
-  <div class="quote-strip"><div class="qs-text">Smart uniforms for <em>every student and staff member.</em> Get a school uniform quote today.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
+  <div class="quote-strip"><div class="qs-text">Smart uniforms for <em>every student and staff member.</em> Get a school uniform quote today.</div><button class="btn-gold" onclick="goHome();goSection('quote')">Get free quote →</button></div>
 </div>
 
 <!-- INDUSTRIAL -->
@@ -736,17 +736,17 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
     <div class="detail-tags"><span class="detail-tag">Heavy-duty fabric</span><span class="detail-tag">Safety compliant</span><span class="detail-tag">Hi-vis options</span><span class="detail-tag">Bulk supply</span></div>
   </div>
   <div class="catalog">
-    <div class="catalog-header r"><div><div class="eyebrow">Industrial range</div><h2>Our workwear styles</h2></div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote</button></div>
+    <div class="catalog-header r"><div><div class="eyebrow">Industrial range</div><h2>Our workwear styles</h2></div><button class="btn-gold" onclick="goHome();goSection('quote')">Get a quote</button></div>
     <div class="catalog-grid">
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=500&q=80" alt="Coverall"><div class="prod-body"><div class="prod-name">Coveralls & boiler suits</div><p class="prod-desc">Full-body coveralls in poly-cotton for factory and maintenance workers. Zip front with multiple pockets.</p><div class="prod-specs"><span class="prod-spec">Poly-cotton</span><span class="prod-spec">Multiple pockets</span><span class="prod-spec">Company logo</span></div></div></div>
-      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1618354691438-25bc04584c23?auto=format&fit=crop&w=500&q=80" alt="Hi-vis jacket"><div class="prod-body"><div class="prod-name">Hi-visibility jackets</div><p class="prod-desc">Fluorescent orange and yellow safety jackets with reflective tape strips for site and construction workers.</p><div class="prod-specs"><span class="prod-spec">EN ISO compliant</span><span class="prod-spec">Reflective strips</span><span class="prod-spec">Logo print</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=500&q=80" alt="Hi-vis jacket"><div class="prod-body"><div class="prod-name">Hi-visibility jackets</div><p class="prod-desc">Fluorescent orange and yellow safety jackets with reflective tape strips for site and construction workers.</p><div class="prod-specs"><span class="prod-spec">EN ISO compliant</span><span class="prod-spec">Reflective strips</span><span class="prod-spec">Logo print</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80" alt="Factory shirt"><div class="prod-body"><div class="prod-name">Factory shirts & trousers</div><p class="prod-desc">Durable work shirts and cargo trousers for plant and factory workers. Reinforced stitching and multiple cargo pockets.</p><div class="prod-specs"><span class="prod-spec">Durable weave</span><span class="prod-spec">Cargo pockets</span><span class="prod-spec">All sizes</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?auto=format&fit=crop&w=500&q=80" alt="Welding jacket"><div class="prod-body"><div class="prod-name">Fire-retardant workwear</div><p class="prod-desc">FR-rated jackets and trousers for welders, electricians and fire safety personnel. Treated fabric that resists ignition.</p><div class="prod-specs"><span class="prod-spec">FR-rated fabric</span><span class="prod-spec">Safety certified</span><span class="prod-spec">Custom logo</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=500&q=80" alt="Winter workwear"><div class="prod-body"><div class="prod-name">Winter workwear</div><p class="prod-desc">Insulated jackets, fleece liners and windbreakers for outdoor and cold-storage workers. Company branding available.</p><div class="prod-specs"><span class="prod-spec">Insulated</span><span class="prod-spec">Windproof</span><span class="prod-spec">Company logo</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=500&q=80" alt="Safety vest"><div class="prod-body"><div class="prod-name">Safety vests & PPE</div><p class="prod-desc">Mesh safety vests, hard-hat liners and PPE accessories. Compliant with Indian safety standards for industrial use.</p><div class="prod-specs"><span class="prod-spec">Safety compliant</span><span class="prod-spec">Breathable mesh</span><span class="prod-spec">Bulk supply</span></div></div></div>
     </div>
   </div>
-  <div class="quote-strip"><div class="qs-text">Keep your <em>workforce safe and uniformed.</em> Get a free industrial workwear quote.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
+  <div class="quote-strip"><div class="qs-text">Keep your <em>workforce safe and uniformed.</em> Get a free industrial workwear quote.</div><button class="btn-gold" onclick="goHome();goSection('quote')">Get free quote →</button></div>
 </div>
 
 <!-- RETAIL -->
@@ -758,17 +758,17 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
     <div class="detail-tags"><span class="detail-tag">Custom branding</span><span class="detail-tag">Any colour</span><span class="detail-tag">Logo print & embroidery</span><span class="detail-tag">Bulk pricing</span></div>
   </div>
   <div class="catalog">
-    <div class="catalog-header r"><div><div class="eyebrow">Retail range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote</button></div>
+    <div class="catalog-header r"><div><div class="eyebrow">Retail range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();goSection('quote')">Get a quote</button></div>
     <div class="catalog-grid">
-      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=500&q=80" alt="Retail polo"><div class="prod-body"><div class="prod-name">Branded polo T-shirts</div><p class="prod-desc">Smart polo shirts with store logo for shop floor staff. Available in any colour matching your brand. Pique cotton or dri-fit.</p><div class="prod-specs"><span class="prod-spec">Logo embroidery</span><span class="prod-spec">Any brand colour</span><span class="prod-spec">S to 5XL</span></div></div></div>
-      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=500&q=80" alt="Retail apron"><div class="prod-body"><div class="prod-name">Retail & store aprons</div><p class="prod-desc">Full and half aprons for store staff — electronics, grocery, pharmacy and more. Logo printed on chest pocket.</p><div class="prod-specs"><span class="prod-spec">Logo print</span><span class="prod-spec">Multiple pockets</span><span class="prod-spec">Custom colour</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=500&q=80" alt="Retail polo"><div class="prod-body"><div class="prod-name">Branded polo T-shirts</div><p class="prod-desc">Smart polo shirts with store logo for shop floor staff. Available in any colour matching your brand. Pique cotton or dri-fit.</p><div class="prod-specs"><span class="prod-spec">Logo embroidery</span><span class="prod-spec">Any brand colour</span><span class="prod-spec">S to 5XL</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=500&q=80" alt="Retail apron"><div class="prod-body"><div class="prod-name">Retail & store aprons</div><p class="prod-desc">Full and half aprons for store staff — electronics, grocery, pharmacy and more. Logo printed on chest pocket.</p><div class="prod-specs"><span class="prod-spec">Logo print</span><span class="prod-spec">Multiple pockets</span><span class="prod-spec">Custom colour</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=500&q=80" alt="Retail blazer"><div class="prod-body"><div class="prod-name">Retail staff blazers</div><p class="prod-desc">Smart blazers for premium retail, showrooms, jewellery stores and luxury brands. Brand logo on chest or lapel.</p><div class="prod-specs"><span class="prod-spec">Premium look</span><span class="prod-spec">Logo badge</span><span class="prod-spec">Men & women</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?auto=format&fit=crop&w=500&q=80" alt="Branded T-shirt"><div class="prod-body"><div class="prod-name">Round-neck branded T-shirts</div><p class="prod-desc">Casual branded T-shirts for grocery stores, warehouses and delivery staff. Front and back logo printing available.</p><div class="prod-specs"><span class="prod-spec">Front & back print</span><span class="prod-spec">180 GSM cotton</span><span class="prod-spec">All sizes</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=500&q=80" alt="Retail vest jacket"><div class="prod-body"><div class="prod-name">Staff vests & jackets</div><p class="prod-desc">Branded vests and windbreakers for outdoor staff, delivery personnel and event teams. Large logo on back.</p><div class="prod-specs"><span class="prod-spec">Large back print</span><span class="prod-spec">Pockets</span><span class="prod-spec">Custom colour</span></div></div></div>
-      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=500&q=80" alt="Uniform set"><div class="prod-body"><div class="prod-name">Complete uniform sets</div><p class="prod-desc">Full uniform sets — shirt/polo + trousers/skirt — supplied as a complete per-person package with your branding.</p><div class="prod-specs"><span class="prod-spec">Full set</span><span class="prod-spec">Bulk pricing</span><span class="prod-spec">Any brand colour</span></div></div></div>
+      <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=500&q=80" alt="Uniform set"><div class="prod-body"><div class="prod-name">Complete uniform sets</div><p class="prod-desc">Full uniform sets — shirt/polo + trousers/skirt — supplied as a complete per-person package with your branding.</p><div class="prod-specs"><span class="prod-spec">Full set</span><span class="prod-spec">Bulk pricing</span><span class="prod-spec">Any brand colour</span></div></div></div>
     </div>
   </div>
-  <div class="quote-strip"><div class="qs-text">Make your <em>retail team look great</em> and on-brand. Get a free uniform quote today.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
+  <div class="quote-strip"><div class="qs-text">Make your <em>retail team look great</em> and on-brand. Get a free uniform quote today.</div><button class="btn-gold" onclick="goHome();goSection('quote')">Get free quote →</button></div>
 </div>
 
 <!-- AVIATION -->
@@ -780,7 +780,7 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
     <div class="detail-tags"><span class="detail-tag">Regulation compliant</span><span class="detail-tag">Premium fabric</span><span class="detail-tag">Custom insignia</span><span class="detail-tag">Men & women</span></div>
   </div>
   <div class="catalog">
-    <div class="catalog-header r"><div><div class="eyebrow">Aviation range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get a quote</button></div>
+    <div class="catalog-header r"><div><div class="eyebrow">Aviation range</div><h2>Our uniform styles</h2></div><button class="btn-gold" onclick="goHome();goSection('quote')">Get a quote</button></div>
     <div class="catalog-grid">
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=500&q=80" alt="Cabin crew uniform"><div class="prod-body"><div class="prod-name">Cabin crew uniforms</div><p class="prod-desc">Elegant blazer and skirt/trouser sets for female cabin crew. Jacket and trouser sets for male crew. Custom airline colours and insignia.</p><div class="prod-specs"><span class="prod-spec">Wrinkle-free</span><span class="prod-spec">Airline insignia</span><span class="prod-spec">Custom colours</span></div></div></div>
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=500&q=80" alt="Ground staff"><div class="prod-body"><div class="prod-name">Ground staff uniforms</div><p class="prod-desc">Smart shirts, trousers and hi-vis vests for ground handling, check-in and baggage staff. Durable and easy to maintain.</p><div class="prod-specs"><span class="prod-spec">Hi-vis option</span><span class="prod-spec">Logo embroidery</span><span class="prod-spec">All sizes</span></div></div></div>
@@ -790,7 +790,7 @@ footer{background:#050503;padding:28px 8%;display:flex;justify-content:space-bet
       <div class="prod-card r"><img class="prod-img" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=500&q=80" alt="Aviation cap"><div class="prod-body"><div class="prod-name">Aviation caps & accessories</div><p class="prod-desc">Peaked officer caps, scarves and ties to complete the aviation uniform set. Custom insignia and colours available.</p><div class="prod-specs"><span class="prod-spec">Officer cap</span><span class="prod-spec">Custom insignia</span><span class="prod-spec">Matching set</span></div></div></div>
     </div>
   </div>
-  <div class="quote-strip"><div class="qs-text">Professional uniforms for your <em>aviation team.</em> Get a free quote within 24 hours.</div><button class="btn-gold" onclick="goHome();scrollTo('#quote')">Get free quote →</button></div>
+  <div class="quote-strip"><div class="qs-text">Professional uniforms for your <em>aviation team.</em> Get a free quote within 24 hours.</div><button class="btn-gold" onclick="goHome();goSection('quote')">Get free quote →</button></div>
 </div>
 
 <!-- FOOTER (shared) -->
@@ -834,13 +834,21 @@ function showIndustry(name){showPage('page-'+name)}
 
 function goHome(){
   showPage('page-home');
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function scrollTo(selector){
-  setTimeout(()=>{
-    const el=document.querySelector(selector);
-    if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
-  },200);
+function goSection(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  const parentPage=el.closest('.page');
+  if(parentPage && !parentPage.classList.contains('active')){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    parentPage.classList.add('active');
+    window.scrollTo({top:0,behavior:'instant'});
+    setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),400);
+  } else {
+    setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),50);
+  }
 }
 
 // Scroll reveal for home page
